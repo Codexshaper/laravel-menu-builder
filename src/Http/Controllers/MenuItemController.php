@@ -2,6 +2,7 @@
 
 namespace CodexShaper\Menu\Http\Controllers;
 
+use CodexShaper\Menu\Facades\Menu as MenuBuilder;
 use CodexShaper\Menu\Models\Menu;
 use CodexShaper\Menu\Models\MenuItem;
 use CodexShaper\Menu\Models\MenuSetting;
@@ -42,6 +43,7 @@ class MenuItemController extends Controller
                 $parents            = $this->checkParents($request->menu_id, $items);
                 $settings           = MenuSetting::where('menu_id', $request->menu_id)->first();
                 $defaultSettings    = MenuSetting::whereNull('menu_id')->first();
+                $menuHtml           = MenuBuilder::generateMenu($request->menu_id);
 
                 if (empty($settings)) {
                     $settings = $defaultSettings;
@@ -53,6 +55,7 @@ class MenuItemController extends Controller
                     'items'    => $parents,
                     'settings' => $settings,
                     'default'  => $defaultSettings,
+                    'menuHtml' => $menuHtml,
                 ]);
             }
         }

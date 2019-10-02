@@ -57,19 +57,28 @@ class MenuBuilder
      */
     public function generateMenu($name)
     {
-        if ($menu = Menu::where('slug', Str::slug($name))->first()) {
-            $menuItems = MenuItem::with('childrens')
-                ->where('menu_id', $menu->id)
-                ->whereNull('parent_id')
-                ->orderBy('order', 'asc')
-                ->get();
-            $settings = self::getSettings($menu->id);
-
-            return view('menu::menus.generate-menu', compact('menuItems', 'settings'))->render();
+        if (is_numeric($name)) {
+            $menuHtml = $this->getMenu($name);
+        } elseif (is_string($name)) {
+            if ($menu = Menu::where('slug', Str::slug($name))->first()) {
+                $menuHtml = $this->getMenu($menu->id);
+            }
         }
 
-        return "";
+        return ($menuHtml) ? $menuHtml : "";
 
+    }
+
+    protected function getMenu($menu_id)
+    {
+        $menuItems = MenuItem::with('childrens')
+            ->where('menu_id', $menu_id)
+            ->whereNull('parent_id')
+            ->orderBy('order', 'asc')
+            ->get();
+        $settings = self::getSettings($menu_id);
+
+        return view('menu::menus.generate-menu', compact('menuItems', 'settings'))->render();
     }
 
     /**

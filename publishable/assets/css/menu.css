@@ -271,7 +271,9 @@ ul {
   top: 0px;
   color: #fff;
   z-index: 9999;
- line-height: 50px;
+  line-height: 50px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 .hasClickChild.active::after {
   content: "\f106";
@@ -385,6 +387,8 @@ ul {
   color: #fff;
   z-index: 9999;
  line-height: 50px;
+ -webkit-transition: all 0.3s;
+ transition: all 0.3s;
 }
 .level_root.horizontal li.menu_item .hasClickChild.active::after {
   content: "\f106";
@@ -439,4 +443,19 @@ ul {
 
 .level_root.horizontal .level_3 li a{
    color: #fff;
+}
+
+
+/* Menu Modal */
+#show_menu_design {
+  background-color: #fb3;
+  border-color: #fb3;
+}
+#showMenuModel .modal-dialog {
+  width: 80%;
+  max-width: 80%;
+}
+
+.menu_items {
+  min-height: 300px;
 }

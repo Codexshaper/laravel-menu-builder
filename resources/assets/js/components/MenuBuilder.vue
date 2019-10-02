@@ -5,16 +5,23 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="create-btn">
-                        <button  
-                            v-on:click="showAddMenuItemForm"
-                            class="btn btn-success" 
-                            data-toggle="modal" 
-                            data-target="#addMenuItemModal"><i class="material-icons">adds</i> Add Item</button>
-                        <button  
-                            v-on:click="showSettingsForm"
-                            class="btn btn-info edit-info" 
-                            data-toggle="modal" 
-                            data-target="#settingsModal"><i class="material-icons">settings_appl</i> Settings</button>
+                            <button  
+                                v-on:click="showAddMenuItemForm"
+                                class="btn btn-success" 
+                                data-toggle="modal" 
+                                data-target="#addMenuItemModal"><i class="material-icons">adds</i> Add Item</button>
+                            <button  
+                                v-on:click="showSettingsForm"
+                                class="btn btn-info edit-info" 
+                                data-toggle="modal" 
+                                data-target="#settingsModal"><i class="material-icons">settings_appl</i> Settings</button>
+                            <button
+                                id="show_menu_design"  
+                                class="btn btn-info edit-info"
+                                :data-id="menu.id" 
+                                :data-prefix="prefix" 
+                                data-toggle="modal" 
+                                data-target="#showMenuModel"><i class="material-icons">visibility</i> Show</button>
                         </div>
 
                     </div>
@@ -39,6 +46,7 @@
                 <menu-item-modals 
                     :items="items"
                     :item="item" 
+                    :menu="menu" 
                     :parents="parents"
                     :settings="settings"
                     :defaultSettings="defaultSettings"

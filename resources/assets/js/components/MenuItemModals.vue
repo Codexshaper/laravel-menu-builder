@@ -139,6 +139,23 @@
             </div>
         </div>
 
+        <!-- Show Menu -->
+        <div class="modal fade" id="showMenuModel" tabindex="-1" role="dialog" aria-labelledby="editMenuModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editMenuItemModalLabel">Display {{ menu.name }} Menu</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="menu_items"></div>
+                        <div class="m-footer">
+                            <button type="button" class="btn btn-danger cs-danger float-right" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -147,10 +164,12 @@
         props: {
             items: Array,
             item: Object,
+            menu: Object,
             settings: Object,
             defaultSettings: Object,
             parents: Array,
             errors: Object,
+            menuHTML: String,
             updateMenuItem: Function,
             addMenuItem: Function,
             addMenuSetting: Function,

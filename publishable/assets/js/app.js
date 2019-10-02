@@ -2036,6 +2036,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2390,14 +2398,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     items: Array,
     item: Object,
+    menu: Object,
     settings: Object,
     defaultSettings: Object,
     parents: Array,
     errors: Object,
+    menuHTML: String,
     updateMenuItem: Function,
     addMenuItem: Function,
     addMenuSetting: Function
@@ -58904,6 +58931,26 @@ var render = function() {
                     ]),
                     _vm._v(" Settings")
                   ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-info edit-info",
+                    attrs: {
+                      id: "show_menu_design",
+                      "data-id": _vm.menu.id,
+                      "data-prefix": _vm.prefix,
+                      "data-toggle": "modal",
+                      "data-target": "#showMenuModel"
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "material-icons" }, [
+                      _vm._v("visibility")
+                    ]),
+                    _vm._v(" Show")
+                  ]
                 )
               ])
             ]),
@@ -58952,6 +58999,7 @@ var render = function() {
             attrs: {
               items: _vm.items,
               item: _vm.item,
+              menu: _vm.menu,
               parents: _vm.parents,
               settings: _vm.settings,
               defaultSettings: _vm.defaultSettings,
@@ -59851,6 +59899,42 @@ var render = function() {
           ]
         )
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "showMenuModel",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "editMenuModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  {
+                    staticClass: "modal-title",
+                    attrs: { id: "editMenuItemModalLabel" }
+                  },
+                  [_vm._v("Display " + _vm._s(_vm.menu.name) + " Menu")]
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(8)
+            ])
+          ]
+        )
+      ]
     )
   ])
 }
@@ -59987,6 +60071,25 @@ var staticRenderFns = [
         },
         [_vm._v("Update")]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("div", { staticClass: "menu_items" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "m-footer" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-danger cs-danger float-right",
+            attrs: { type: "button", "data-dismiss": "modal" }
+          },
+          [_vm._v("Close")]
+        )
+      ])
     ])
   }
 ]

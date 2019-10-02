@@ -15,6 +15,7 @@ Route::group(['namespace' => config('menu.controller_namespace')], function () {
     // Menus
     Route::get('getMenus', 'MenuController@getMenus');
     Route::get('menu/{id}', 'MenuController@getMenu');
+    Route::get('menu/html/{id}', 'MenuController@getMenuHtml');
     Route::post('menu', 'MenuController@store');
     Route::post('menu/sort', 'MenuController@sort');
     Route::put('menu', 'MenuController@update');

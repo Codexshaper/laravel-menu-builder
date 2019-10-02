@@ -48,6 +48,17 @@ class MenuController extends Controller
         return response()->json(['success' => false]);
     }
 
+    public function getMenuHtml(Request $request)
+    {
+        if ($request->ajax()) {
+            $html = \MenuBuilder::generateMenu($request->id);
+            return response()->json([
+                'success' => true,
+                'html'    => $html,
+            ]);
+        }
+    }
+
     /**
      * Create new menu.
      *
