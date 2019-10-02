@@ -263,8 +263,9 @@ ul {
 
 .hasHoverChild::after,
 .hasClickChild::after {
-  font-family: 'FontAwesome';
+  font-family: 'Font Awesome 5 Free';
   content: "\f107";
+  font-weight: 600;
   position: absolute;
   right: 5px;
   top: 0px;
@@ -375,8 +376,9 @@ ul {
 
 .level_root.horizontal li.menu_item .hasHoverChild::after,
 .level_root.horizontal li.menu_item .hasClickChild::after {
-  font-family: 'FontAwesome';
+  font-family: 'Font Awesome 5 Free';
   content: "\f107";
+  font-weight: 600;
   position: absolute;
   right: 5px;
   top: 0px;

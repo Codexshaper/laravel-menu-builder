@@ -10,6 +10,7 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
+        "@fortawesome/fontawesome-free": "^5.11.2",
         "axios": "^0.19",
         "bootstrap": "^4.1.0",
         "cross-env": "^5.1",
@@ -25,11 +26,9 @@
     },
     "dependencies": {
         "datatables.net-bs4": "^1.10.19",
-        "mdbootstrap": "^4.8.9",
         "nestable2": "^1.6.0",
         "select2": "^4.0.10",
         "sweetalert2": "^8.16.3",
-        "toastr": "^2.1.4",
-        "vuedraggable": "^2.23.0"
+        "toastr": "^2.1.4"
     }
 }

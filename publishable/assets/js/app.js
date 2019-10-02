@@ -1867,6 +1867,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     prefix: String,
@@ -1885,13 +1888,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    // this.$emit('initNestable', '#nestmenu');
     if (this.lists && this.lists.length > 0) {
       this.isNestMenu = true;
-    } // console.log( this.isNestMenu );
-    // this.destroyNestable('#nestmenu');
+    }
 
-
+    toastr.options.closeButton = true;
     this.initNestable('#nestmenu');
   },
   methods: {
@@ -1905,19 +1906,25 @@ __webpack_require__.r(__webpack_exports__);
           $(selector).nestable('destroy');
           $(selector).nestable({
             group: 1,
-            maxDepth: parseInt(self.depth)
-          }).on('change', function (l, e) {
-            var list = l.length ? l : $(l.target);
-            var menus = list.nestable('toArray');
-            axios({
-              url: self.prefix + '/menu/item/sort',
-              method: 'POST',
-              responseType: 'json',
-              data: {
-                'menus': menus
-              }
-            }).then(function (response) {// console.log( response );
-            });
+            maxDepth: parseInt(self.depth),
+            callback: function callback(l, e) {
+              // l is the main container
+              // e is the element that was moved
+              var list = l.length ? l : $(l.target);
+              var menus = list.nestable('toArray');
+              axios({
+                url: self.prefix + '/menu/item/sort',
+                method: 'POST',
+                responseType: 'json',
+                data: {
+                  'menus': menus
+                }
+              }).then(function (res) {
+                if (res.data.success == true) {
+                  toastr.success('Sorted Successfully.', 'Menu Item');
+                }
+              });
+            }
           });
         }
       }, 1000);
@@ -1927,9 +1934,6 @@ __webpack_require__.r(__webpack_exports__);
         $(selector).nestable('destroy');
       }, 500);
     }
-  },
-  mounted: function mounted() {// this.initNestable('#nestmenu');
-    // this.$emit('initNestable', '#nestmenu');
   }
 });
 
@@ -58716,8 +58720,22 @@ var render = function() {
         },
         [
           _c("div", { staticClass: "dd-handle" }, [
-            _vm._v(_vm._s(list.title) + " "),
-            _c("span", { staticClass: "item-url" }, [_vm._v(_vm._s(list.url))])
+            _c(
+              "span",
+              {
+                staticClass: "item=icon",
+                domProps: { innerHTML: _vm._s(list.icon) }
+              },
+              [_vm._v(" " + _vm._s(list.icon))]
+            ),
+            _vm._v(" "),
+            _c("span", { staticClass: "item-title" }, [
+              _vm._v(" " + _vm._s(list.title))
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "item-url" }, [
+              _vm._v(" " + _vm._s(list.url))
+            ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "action-area" }, [

@@ -1,7 +1,10 @@
 <template>
     <ol class="dd-list">
         <li v-for="list in lists" :key="list.id" class='dd-item' :data-order="list.order" :data-id="list.id">
-            <div class='dd-handle'>{{list.title}} <span class="item-url">{{list.url}}</span></div>
+            <div class='dd-handle'>
+                <span class="item=icon" v-html="list.icon"> {{ list.icon }}</span> 
+                <span class="item-title"> {{list.title}}</span>
+                <span class="item-url"> {{list.url}}</span></div>
             <div class='action-area'>
                 <a href="#"
                     class="btn btn-info edit-info"  

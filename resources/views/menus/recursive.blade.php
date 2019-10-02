@@ -1,6 +1,9 @@
 
 <li data-id="{{$menu->id}}" class="menu_item">
-    <a href="{{ ($menu->url != '') ? $menu->url : '#' }}">{!! ($menu->icon != "") ? '<i class="'.$menu->icon.'"></i>' : "" !!}{{ $menu->title }}</a>
+    <a href="{{ ($menu->url != '') ? $menu->url : '#' }}">
+        <span class="menu-icon"></span>{!! $menu->icon !!}
+        <span class="menu-title">{{ $menu->title }}</span>
+    </a>
     @if (count($menu->children) > 0)
         <ul class="
         level_{{ ++$i }}

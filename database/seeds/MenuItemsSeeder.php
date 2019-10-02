@@ -25,7 +25,7 @@ class MenuItemsSeeder extends Seeder
         $menuItem->menu_id      = $menu->id;
         $menuItem->title        = "Menu Builder";
         $menuItem->slug         = Str::slug("Menu Builder");
-        $menuItem->url          = "/admin/menu/menu-builder";
+        $menuItem->url          = "/admin/menus";
         $menuItem->parent_id    = null;
         $menuItem->order        = 1;
         $menuItem->target       = '_self';
