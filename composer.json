@@ -1,0 +1,29 @@
+{
+    "name": "codexshaper/laravel-menu-builder",
+    "description": "Laravel Drag and Drop Menu Builder",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Md Abu Ahsan Basir",
+            "email": "maab.career@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "CodexShaper\\Menu\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CodexShaper\\Menu\\MenuServiceProvider"
+            ],
+            "aliases": {
+                "MenuBuilder": "CodexShaper\\Menu\\Facades\\Menu"
+            }
+        }
+    }
+}

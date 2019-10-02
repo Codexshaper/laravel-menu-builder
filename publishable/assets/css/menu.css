@@ -1,0 +1,440 @@
+.dd {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  list-style: none;
+  font-size: 13px;
+  line-height: 20px;
+}
+.dd-list {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.dd-list .dd-list {
+  padding-left: 30px;
+}
+.dd-item,
+.dd-empty,
+.dd-placeholder {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 50px;
+  font-size: 13px;
+  line-height: 25px;
+
+}
+
+.dd-dragel,
+.dd-empty,
+.dd-placeholder {
+  cursor: grab;
+  box-shadow: 0px 0px 1.2px 1.2px rgba(0,0,0,.1);
+  margin: 0px;
+}
+.dd-handle {
+    display: block;
+    height: 50px;
+    margin: 10px 0;
+    padding: 14px 20px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    background: #fafafa;
+    border-radius: 3px 0px 0px 3px;
+    box-sizing: border-box;
+    font-size: 15px;
+   box-shadow: 0px 0px 1px 1px rgba(0,0,0,.2);
+   transition:  all ease .4s;
+}
+.dd-handle:hover {
+  color: #2ea8e5;
+  background: #fff;
+  cursor: grab;
+}
+.dd-item > button {
+  position: relative;
+  cursor: pointer;
+  float: left;
+  width: 30px;
+  height: 30px;
+  margin: 7px 0;
+  padding: 0;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  font-size: 21px;
+  line-height: 1;
+  text-align: center;
+  font-weight: bold;
+  color: #00bcd4;
+}
+.dd-item > button:before {
+  display: block;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  text-indent: 0;
+}
+.dd-item > button.dd-expand:before {
+  content: '+';
+}
+.dd-item > button.dd-collapse:before {
+  content: '-';
+}
+.dd-expand {
+  display: none;
+}
+.dd-collapsed .dd-list,
+.dd-collapsed .dd-collapse {
+  display: none;
+}
+.dd-collapsed .dd-expand {
+  display: block;
+}
+.dd-empty,
+.dd-placeholder {
+  margin: 6px 0;
+  padding: 0;
+  min-height: 50px;
+  background: rgba(225,225,225,.6);
+  border: 1px dashed #b6bcbf;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+.dd-empty {
+  border: 1px dashed #bbb;
+  min-height: 100px;
+  background-color: rgba(225,225,225,.5) ;
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+}
+.dd-dragel {
+  position: absolute;
+  pointer-events: none;
+  z-index: 9999;
+  height: 50px ;
+  
+}
+.dd-dragel > .dd-item .dd-handle {
+  margin-top: 0;
+}
+
+
+
+.dd-dragel .dd-handle {
+box-shadow: 0px 0px 1px 1px rgba(0,0,0,.2);
+
+}
+
+.dd-nochildren .dd-placeholder {
+  display: none;
+}
+.dd .btn {
+  padding: 10px 20px;
+ 
+}
+.dd .btn .material-icons, .btn:not(.btn-just-icon):not(.btn-fab) .fa {
+    font-size: 1.5rem !important;
+}
+
+.dd-dragel  .dd-item .dd-handle .btn {
+   padding: 10px 20px;
+  
+  
+}
+
+.dd-dragel  .dd-item  .btn {
+ padding: 10px 20px;
+ 
+  
+}
+
+.action-area {
+    position: absolute;
+    right: 9px;
+    z-index: 11;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.dd-dragel .dd-handle .btn .material-icons, .btn:not(.btn-just-icon):not(.btn-fab) .fa {
+    font-size: 1.5rem !important;
+}
+
+.dd-dragel .dd-item .btn .material-icons, .btn:not(.btn-just-icon):not(.btn-fab) .fa {
+    font-size: 1.5rem !important;
+}
+
+
+.cx-menu-builder {
+    box-shadow: 0px 2px 2px 2px rgba(225,225,225,.6);
+    background: #fff;
+    padding: 27px 29px;
+}
+
+.item-url {
+    font-size: 13px;
+    color: #777;
+    margin-left: 2px;
+}
+
+ul {
+  list-style: none;
+  min-width: 260px;
+  padding: 0px;
+  margin: 0px;
+}
+
+/* Menu Frontend */
+
+
+.level_root {
+  position: relative;
+}
+.level_root  li a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  white-space: nowrap;
+  color: #fff;
+  transition: all ease .4s;
+  padding-left: 37px;
+  
+}
+
+.level_root > .menu_item.active > a  {
+  background-color: #115a7f;
+  color: #fff;
+}
+.onClick {
+  display: none;
+  background-color: #077582;
+}
+
+.onHover {
+  position: absolute;
+  display: none;
+  transition: 0.5s;
+  background-color: #000;
+  z-index: 9999 !important;
+}
+.onHover.active {
+  display: block;
+}
+
+.onClick.left,
+.onHover.left {
+    left: -100%;
+    top: 0;
+}
+
+.onClick.right,
+.onHover.right {
+    left: 100%;
+    top: 0;
+}
+
+.onClick.bottom,
+.onHover.bottom {
+    left: 0px;
+    top: 100%;
+    position: relative;
+}
+
+.onClick.top,
+.onHover.top {
+    left: 0px;
+    top: -100%;
+}
+
+.hasHoverChild,
+.hasClickChild {
+  position: relative;
+}
+
+.hasHoverChild::after,
+.hasClickChild::after {
+  font-family: 'FontAwesome';
+  content: "\f107";
+  position: absolute;
+  right: 5px;
+  top: 0px;
+  color: #fff;
+  z-index: 9999;
+ line-height: 50px;
+}
+.hasClickChild.active::after {
+  content: "\f106";
+  top:0;
+}
+
+.hasHoverChild::after {
+  content: "\f105";
+}
+
+.hasHoverChild:hover::after {
+  content: "\f104";
+}
+
+/*vertical css*/
+
+.level_root.vertical  > li > a  {
+    background:#0e9fd3;
+}
+
+.level_root.vertical  li.menu_item a:hover { 
+    background: #0b8ca0; 
+}
+.level_root.vertical .level_1 {
+    background: #15a2d6;
+}
+
+.level_root.vertical .level_1 li.active{
+    background: #000 ;
+}
+
+.level_root.vertical .level_2 {
+    background:#29bcf2;
+}
+.level_root.vertical .level_2 li.active{
+   background: #115a7f;
+}
+.level_root.vertical .level_2 li a {
+     color:#fff ;
+}
+.level_root.vertical .level_2> li> a:hover{
+    color:#fff;
+    background:#06abe2 !important;
+}
+
+.level_root.vertical  .level_3{
+   background: #000;
+}
+.level_root.vertical .level_3 li.active{
+   background: #07990c;
+}
+
+.level_root.vertical  .level_3 > li:hover> a{
+   background:rgba(225,225,225,.2) !important;
+   color: #fff;
+}
+
+.level_root.vertical  .level_3 li a{
+   color: #fff;
+}
+
+.level_root.vertical .level_4{
+   background: ;
+}
+.level_root.vertical .level_4 >li:hover> a{
+   background:#24cbe5 !important ;
+}
+
+
+/*horizontal  css*/
+.level_root.horizontal {
+   width: 100%;
+   display: flex;
+}
+.level_root.horizontal  > li > a  {
+    background:#0e9fd3;
+    padding-right: 35px;
+    padding-left: 35px;
+}
+.level_root.horizontal  > li.hasHoverChild:after {
+  content: "\f107";
+}
+.level_root.horizontal  > li.hasHoverChild:hover:after {
+  content: "\f106";
+}
+.level_root.horizontal .onHover {
+  position: absolute;
+}
+.level_root.horizontal::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.level_root.horizontal li {
+  position: relative;
+  height: 100%;
+}
+
+.level_root.horizontal .onHover li {
+  text-align: left;
+}
+
+.level_root.horizontal li.menu_item .hasHoverChild::after,
+.level_root.horizontal li.menu_item .hasClickChild::after {
+  font-family: 'FontAwesome';
+  content: "\f107";
+  position: absolute;
+  right: 5px;
+  top: 0px;
+  color: #fff;
+  z-index: 9999;
+ line-height: 50px;
+}
+.level_root.horizontal li.menu_item .hasClickChild.active::after {
+  content: "\f106";
+  top:0;
+}
+
+.level_root.horizontal li.menu_item .hasHoverChild::after {
+  content: "\f105";
+}
+
+.level_root.horizontal li.menu_item .hasHoverChild:hover::after {
+  content: "\f104";
+}
+
+
+.level_root.horizontal li.menu_item a:hover { 
+    background: #0b8ca0; 
+}
+.level_root.vertical .level_1 {
+    background: #15a2d6;
+}
+
+.level_root.horizontal .level_1 li.active{
+    background: #000 ;
+}
+
+.level_root.horizontal .level_2 {
+    background:#29bcf2;
+}
+.level_root.horizontal .level_2 li.active{
+   background: #115a7f;
+}
+.level_root.horizontal .level_2 li a {
+     color:#fff ;
+}
+.level_root.horizontal.level_2> li> a:hover{
+    color:#fff;
+    background:#06abe2 !important;
+}
+
+.level_root.horizontal .level_3{
+   background: #000;
+}
+.level_root.horizontal.level_3 li.active{
+   background: #07990c;
+}
+
+.level_root.horizontal .level_3 > li:hover> a{
+   background:rgba(225,225,225,.2) !important;
+   color: #fff;
+}
+
+.level_root.horizontal .level_3 li a{
+   color: #fff;
+}
