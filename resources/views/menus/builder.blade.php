@@ -1,18 +1,6 @@
 @extends('menu::layouts.app')
 
 @section('content')
-    <div class="cx-sidebar">
-        <div class="left-sidebar">
-              <div class="sidebar" style="background-image: url({{ menu_asset('img/sidebar.jpg') }})">
-                <div class="sidebar-wrapper">
-
-                  <div class="user-pannel"> </div>
-                  {!! menu('Admin') !!}
-                </div>
-              </div>
-          </div>
-      </div>
-
         <div class="cx-main-pannel">
               <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
