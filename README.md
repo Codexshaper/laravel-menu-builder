@@ -18,6 +18,7 @@ php artisan menu:install
 #for check menus go to `http://127.0.0.1:8000/admin/menus` . You can change `admin` prefix from `config/menu.php`
 
 #How to use Menu in your site? You can choose any one from two uses
+
 Use 1:
 ```
 @extends('menu::layouts.app')
