@@ -2043,7 +2043,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2536,7 +2535,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MenuModals__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MenuModals */ "./resources/assets/js/components/MenuModals.vue");
-//
 //
 //
 //
@@ -58949,7 +58947,7 @@ var render = function() {
                     _c("i", { staticClass: "material-icons" }, [
                       _vm._v("visibility")
                     ]),
-                    _vm._v(" Show")
+                    _vm._v(" View Design")
                   ]
                 )
               ])
@@ -58957,12 +58955,8 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "col-md-12" }, [
               _c("div", { staticClass: "use-menu" }, [
-                _c("h2", [_vm._v("How To Use:")]),
-                _vm._v(" "),
                 _c("p", [
-                  _vm._v(
-                    "You can output a menu anywhere on your site by calling "
-                  ),
+                  _vm._v("To use a menu on your site just call "),
                   _c("span", { staticClass: "menu-code" }, [
                     _vm._v(" menu('" + _vm._s(_vm.menu.slug) + "')")
                   ]),
@@ -60663,8 +60657,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-12" }, [
       _c("div", { staticClass: "use-menu" }, [
-        _c("h2", [_vm._v("How To Use:")]),
-        _vm._v(" "),
         _c("p", [
           _vm._v("To use a menu on your site just call "),
           _c("span", { staticClass: "menu-code" }, [_vm._v("menu('name')")]),

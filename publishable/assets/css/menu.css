@@ -51,7 +51,7 @@
     box-sizing: border-box;
     font-size: 15px;
    box-shadow: 0px 0px 1px 1px rgba(0,0,0,.2);
-   transition:  all ease .4s;
+   transition:  all ease 0.3s;
 }
 .dd-handle:hover {
   color: #2ea8e5;
@@ -445,6 +445,34 @@ ul {
    color: #fff;
 }
 
+/* Sidebar Menu */
+.sidebar .level_root.vertical > li > a,
+.sidebar .level_root.vertical .level_1 > li > a {
+  background-color: transparent;
+}
+.sidebar .level_root.vertical .level_1 {
+  background-color: rgba(14, 141, 162, 0.3) !important;
+  color: #fff;
+}
+.sidebar .level_root > .menu_item > a:hover,
+.sidebar .level_root > .menu_item.active > a {
+  background-color: rgba(14, 141, 162, 0.5) !important;
+}
+
+.sidebar .level_root .level_1 .onHover {
+  background-color: rgba(14, 141, 162, 0.8) !important;
+}
+.sidebar .level_root .level_1 .menu_item.active > a {
+  background-color: rgba(14, 141, 162, 0.9) !important;
+}
+
+.sidebar .level_root .level_1 .onClick {
+  background-color: rgb(14, 141, 162) !important;
+}
+
+.sidebar .level_root .level_3.onHover {
+  background-color: rgba(0, 115, 176, 0.8) !important;
+}
 
 /* Menu Modal */
 #show_menu_design {

@@ -256,8 +256,18 @@ select.error {
     height: 100vh;
 }
 .sidebar {
-    background: #0b82ba;
-    
+    background: #ccc;
+    background-position: center;
+    background-size: cover;
+}
+.sidebar::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(14, 141, 162, 0.2);
 }
 
 .sidebar ul.nav{
@@ -313,8 +323,21 @@ select.error {
 .navbar {
     box-shadow: 0 0px 2px 0 rgba(0,0,0,.12),0 7px 10px -5px rgba(0,0,0,.15);
 }
+.sidebar h2 {
+    z-index: 9999;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 26px;
+    top: 17px;
+}
+.sidebar h2 a {
+    font-family: Roboto;
+    color: #fff;
+    font-weight: 600;
+}
 .sidebar .sidebar-wrapper {
-    top: 30px;
+    top: 70px;
     text-align: left;
 }
 .sidebar .nav li:hover > a {
@@ -353,7 +376,8 @@ select.error {
 }
 
 .use-menu p{
-    margin: 0px 6px;
+    padding: 10px 15px;
+    margin: 0px;
     font-weight: 400;
     font-size: 14px
    

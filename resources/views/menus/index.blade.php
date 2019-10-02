@@ -2,14 +2,12 @@
 
 @section('content')
     	<div class="cx-sidebar">
-    		<div class="left-sidebar">
-              <div class="sidebar">
-                <div class="sidebar-wrapper">
-                  <div class="user-pannel"> </div>
-                    {{ menu('Admin') }}
-                </div>
-              </div>
+    		<div class="sidebar" style="background-image: url({{ menu_asset('img/sidebar.jpg') }})">
+          <h2><a href="http://codexshaper.com">CodexShaper</a></h2>
+          <div class="sidebar-wrapper">
+              {{ menu('Admin') }}
           </div>
+        </div>
     	</div>
 
          <div class="cx-main-pannel">

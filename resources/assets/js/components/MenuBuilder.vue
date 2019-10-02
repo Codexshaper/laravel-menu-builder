@@ -21,14 +21,13 @@
                                 :data-id="menu.id" 
                                 :data-prefix="prefix" 
                                 data-toggle="modal" 
-                                data-target="#showMenuModel"><i class="material-icons">visibility</i> Show</button>
+                                data-target="#showMenuModel"><i class="material-icons">visibility</i> View Design</button>
                         </div>
 
                     </div>
                     <div class="col-md-12">
                         <div class="use-menu">
-                            <h2>How To Use:</h2> 
-                             <p>You can output a menu anywhere on your site by calling <span class="menu-code"> menu('{{ menu.slug }}')</span> Or <span class="menu-code"> @menu('{{ menu.slug }}')</span></p>
+                             <p>To use a menu on your site just call <span class="menu-code"> menu('{{ menu.slug }}')</span> Or <span class="menu-code"> @menu('{{ menu.slug }}')</span></p>
                         </div>
                     </div>
                 </div>

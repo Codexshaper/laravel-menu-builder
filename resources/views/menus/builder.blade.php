@@ -3,7 +3,7 @@
 @section('content')
     <div class="cx-sidebar">
         <div class="left-sidebar">
-              <div class="sidebar">
+              <div class="sidebar" style="background-image: url({{ menu_asset('img/sidebar.jpg') }})">
                 <div class="sidebar-wrapper">
 
                   <div class="user-pannel"> </div>

@@ -12,7 +12,6 @@
                      </div>
                      <div class="col-md-12">
                         <div class="use-menu">
-                            <h2>How To Use:</h2> 
                              <p>To use a menu on your site just call <span class="menu-code">menu('name')</span> Or <span class="menu-code"> @menu('name')</span></p>
                         </div>
                      </div>
