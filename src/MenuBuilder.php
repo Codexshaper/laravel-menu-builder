@@ -51,9 +51,9 @@ class MenuBuilder
     /**
      * Generate Menu for display
      *
-     * @param  string $request
+     * @param  string $name
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\View\View|string
      */
     public function generateMenu($name)
     {
@@ -65,10 +65,17 @@ class MenuBuilder
             }
         }
 
-        return ($menuHtml) ? $menuHtml : "";
+        return isset($menuHtml) ? $menuHtml : "";
 
     }
 
+    /**
+     * Generate Menu for display
+     *
+     * @param  int $menu_id
+     *
+     * @return \Illuminate\View\View
+     */
     protected function getMenu($menu_id)
     {
         $menuItems = MenuItem::with('childrens')
