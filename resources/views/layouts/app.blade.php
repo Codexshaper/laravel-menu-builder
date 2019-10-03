@@ -24,7 +24,6 @@
 <body>
 <div id="app">
     <main class="main-menu">
-        @include('menu::layouts.sidebar')
         @yield('content')
     </main>
 </div>

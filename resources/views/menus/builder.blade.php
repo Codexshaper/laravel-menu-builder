@@ -1,6 +1,7 @@
 @extends('menu::layouts.app')
 
 @section('content')
+        @include('menu::layouts.sidebar')
         <div class="cx-main-pannel">
               <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">

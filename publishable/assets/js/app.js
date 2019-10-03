@@ -2233,6 +2233,7 @@ __webpack_require__.r(__webpack_exports__);
       this.item.url = '';
       this.item.target = '_self';
       this.item.parent_id = '';
+      this.item.icon = '';
       this.item.custom_class = '';
     },
     closeModal: function closeModal() {
