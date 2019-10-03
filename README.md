@@ -57,7 +57,3 @@ JS: <script src="{{ menu_asset('js/app.js') }}"></script>
 
 # Credits
 #Designed by Mahabubul Alam and concept inspired from voyager `https://github.com/the-control-group/voyager`
-
-# Fonts:
- 1. Meterial icons
- 2. Font Awesome Icons
