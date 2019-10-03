@@ -10,6 +10,7 @@ composer require codexshaper/laravel-menu-builder
 ```
 
 #Optional:
+
     - If your mysql version is old then follow next steps
        * Goto app\Providers\AppServiceProvider.php and open it in your text editor
        * Add 'use Illuminate\Support\Facades\Schema;' on top under namespace
