@@ -55,4 +55,9 @@ CSS: <link rel="stylesheet" type="text/css" href="{{ menu_asset('css/app.css') }
 JS: <script src="{{ menu_asset('js/app.js') }}"></script>
 ```
 
-#Designed concept inspired from voyager `https://github.com/the-control-group/voyager`
+# Credits
+#Designed by Mahabubul Alam and concept inspired from voyager `https://github.com/the-control-group/voyager`
+
+# Fonts:
+ 1. Meterial icons
+ 2. Font Awesome Icons
