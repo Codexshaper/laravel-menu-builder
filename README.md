@@ -8,6 +8,13 @@ Laravel Menu Builder with VueJs and jQuery.
 ```
 composer require codexshaper/laravel-menu-builder
 ```
+
+#Optional:
+    - If your mysql version is old then follow next steps
+       * Goto app\Providers\AppServiceProvider.php and open it in your text editor
+       * Add 'use Illuminate\Support\Facades\Schema;' on top under namespace
+       * Add 'Schema::defaultStringLength(191);' in your boot method
+       
 #Publish Resource, Configs, Migration and Seeding Database in a single command
 
 ```
