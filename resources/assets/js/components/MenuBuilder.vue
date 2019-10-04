@@ -38,6 +38,7 @@
                         :lists="lists"
                         :settings="settings"
                         :defaultSettings="defaultSettings" 
+                        :isDestroyAble="isDestroyAble" 
                         :editMenuItem="editMenuItem" 
                         :deleteMenuItem="deleteMenuItem">
                     </draggable-menu>
@@ -92,7 +93,8 @@
                 renderComponent: true,
                 errors:{
                     title: ""
-                }
+                },
+                isDestroyAble: false
             };
         },
         created(){
@@ -144,6 +146,7 @@
                         self.errors.title = "";
                         self.resetForm();
                         self.fetchMenuItems();
+                        self.isDestroyAble = true;
                         self.closeModal();
                     }else {
                         self.errors.title = res.data.errors.title[0];
@@ -186,6 +189,7 @@
                     if( res.data.success == true ) {
                         self.errors.title = "";
                         self.fetchMenuItems();
+                        self.isDestroyAble = true;
                         self.closeModal();
                         toastr.success('Updated Successfully.', item.title);
                     }else {
@@ -217,6 +221,7 @@
                         .then(res => {
                             if (res.data.success == true) {
                                 self.fetchMenuItems();
+                                self.isDestroyAble = true;
                                 toastr.success('Menu Deleted Successfully.');
                             }
                         })
@@ -246,6 +251,7 @@
                     if(res.data.success == true) {
                         self.resetForm();
                         self.fetchMenuItems();
+                        self.isDestroyAble = true;
                         toastr.success('Updated Successfully.', 'Settings');
                         self.closeModal();
                     }

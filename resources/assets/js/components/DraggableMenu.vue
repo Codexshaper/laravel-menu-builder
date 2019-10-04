@@ -37,9 +37,9 @@
         lists: Array,
         settings: Object,
         defaultSettings: Object,
+        isDestroyAble: Boolean,
         editMenuItem: Function,
         deleteMenuItem: Function,
-        fetchMenus: Function
     },
     name: 'draggable-menu',
     data(){
@@ -64,7 +64,9 @@
             setTimeout(function(){
                 if( self.isNestMenu ){
 
-                    $(selector).nestable('destroy');
+                    if(self.isDestroyAble) {
+                        $(selector).nestable('destroy');
+                    }
                     
                     $(selector).nestable({
                         group: 1,
