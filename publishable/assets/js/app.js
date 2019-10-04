@@ -60386,7 +60386,7 @@ var render = function() {
                       _c(
                         "label",
                         { staticClass: "cs-label", attrs: { for: "url" } },
-                        [_vm._v("URL")]
+                        [_vm._v("Custom Class")]
                       )
                     ]),
                     _vm._v(" "),

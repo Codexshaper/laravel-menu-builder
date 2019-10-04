@@ -55,7 +55,7 @@
                             </div>
                             <div class="form-group">
                                 <input type="text" name="custom_class" class="form-control input-field " v-model="menu.custom_class" placeholder="Custom Class">
-                                <label for="url" class="cs-label">URL</label>
+                                <label for="url" class="cs-label">Custom Class</label>
                             </div>
                             <div class="m-footer pull-right">
                                 <button type="button" class="btn btn-danger cs-danger" data-dismiss="modal">Close</button>
