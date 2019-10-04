@@ -196,7 +196,7 @@ class MenuItemController extends Controller
                 $childrens = $this->getChildrens($request->menu_id, $request->id);
 
                 // If Allow Child as a Parent
-                if ($request->applyChildAsParent) {
+                if ($request->apply_child_as_parent) {
 
                     foreach ($childrens as $children) {
                         $children->parent_id = $menuItem->parent_id;
@@ -206,7 +206,7 @@ class MenuItemController extends Controller
                     $parent_id = $request->parent_id;
                 }
 
-                if (!$request->applyChildAsParent) {
+                if (!$request->apply_child_as_parent) {
                     $depth = $this->getDepth($childrens);
 
                     if (!$request->parent_id) {
@@ -321,7 +321,7 @@ class MenuItemController extends Controller
 
                 if ($depth < $settings->depth) {
 
-                    if ($settings->applyChildAsParent) {
+                    if ($settings->apply_child_as_parent) {
                         $this->parents[] = $item;
                     } elseif (!in_array($item->id, $ids)) {
                         $this->parents[] = $item;
@@ -525,9 +525,9 @@ class MenuItemController extends Controller
             if ($request->depth && $request->menu_id) {
 
                 if ($menuSetting = MenuSetting::where('menu_id', $request->menu_id)->first()) {
-                    $menuSetting->depth              = $request->depth;
-                    $menuSetting->levels             = $request->levels;
-                    $menuSetting->applyChildAsParent = $request->applyChildAsParent;
+                    $menuSetting->depth                 = $request->depth;
+                    $menuSetting->levels                = $request->levels;
+                    $menuSetting->apply_child_as_parent = $request->apply_child_as_parent;
 
                     if ($menuSetting->update()) {
                         return response()->json([
@@ -536,11 +536,11 @@ class MenuItemController extends Controller
                         ]);
                     }
                 } else {
-                    $menuSetting                     = new MenuSetting;
-                    $menuSetting->menu_id            = $request->menu_id;
-                    $menuSetting->depth              = $request->depth;
-                    $menuSetting->applyChildAsParent = $request->applyChildAsParent;
-                    $menuSetting->levels             = $request->levels;
+                    $menuSetting                        = new MenuSetting;
+                    $menuSetting->menu_id               = $request->menu_id;
+                    $menuSetting->depth                 = $request->depth;
+                    $menuSetting->apply_child_as_parent = $request->apply_child_as_parent;
+                    $menuSetting->levels                = $request->levels;
 
                     if ($menuSetting->save()) {
 

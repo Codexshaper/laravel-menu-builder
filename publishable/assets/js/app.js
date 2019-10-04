@@ -2068,13 +2068,11 @@ __webpack_require__.r(__webpack_exports__);
         target: '_self',
         parent_id: '',
         custom_class: '',
-        applyChildAsParent: false
+        apply_child_as_parent: 0
       },
       childrens: [],
       parents: [],
-      settings: {
-        applyChildAsParent: false
-      },
+      settings: {},
       defaultSettings: {},
       successMsg: '',
       renderComponent: true,
@@ -2103,6 +2101,7 @@ __webpack_require__.r(__webpack_exports__);
           self.items = res.data.items;
           self.settings = res.data.settings;
           self.settings.menu_id = self.menu.id;
+          self.settings.apply_child_as_parent = parseInt(self.settings.apply_child_as_parent);
           self.settings.levels = JSON.stringify(self.settings.levels, null, 4);
           self.defaultSettings = res.data["default"];
           self.renderComponent = true;
@@ -2152,7 +2151,7 @@ __webpack_require__.r(__webpack_exports__);
         if (res.data.success == true) {
           self.item = res.data.item;
           self.item.parent_id = res.data.item.parent_id ? res.data.item.parent_id : '';
-          self.item.applyChildAsParent = self.settings.applyChildAsParent;
+          self.item.apply_child_as_parent = parseInt(self.settings.apply_child_as_parent);
           self.childrens = res.data.childrens;
           self.parents = res.data.parents;
         }
@@ -59896,25 +59895,26 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.settings.applyChildAsParent,
-                            expression: "settings.applyChildAsParent"
+                            value: _vm.settings.apply_child_as_parent,
+                            expression: "settings.apply_child_as_parent"
                           }
                         ],
                         attrs: {
                           type: "checkbox",
-                          name: "applyChildAsParent",
-                          id: "applyChildAsParent"
+                          name: "apply_child_as_parent",
+                          id: "apply_child_as_parent"
                         },
                         domProps: {
                           checked: Array.isArray(
-                            _vm.settings.applyChildAsParent
+                            _vm.settings.apply_child_as_parent
                           )
-                            ? _vm._i(_vm.settings.applyChildAsParent, null) > -1
-                            : _vm.settings.applyChildAsParent
+                            ? _vm._i(_vm.settings.apply_child_as_parent, null) >
+                              -1
+                            : _vm.settings.apply_child_as_parent
                         },
                         on: {
                           change: function($event) {
-                            var $$a = _vm.settings.applyChildAsParent,
+                            var $$a = _vm.settings.apply_child_as_parent,
                               $$el = $event.target,
                               $$c = $$el.checked ? true : false
                             if (Array.isArray($$a)) {
@@ -59924,25 +59924,29 @@ var render = function() {
                                 $$i < 0 &&
                                   _vm.$set(
                                     _vm.settings,
-                                    "applyChildAsParent",
+                                    "apply_child_as_parent",
                                     $$a.concat([$$v])
                                   )
                               } else {
                                 $$i > -1 &&
                                   _vm.$set(
                                     _vm.settings,
-                                    "applyChildAsParent",
+                                    "apply_child_as_parent",
                                     $$a.slice(0, $$i).concat($$a.slice($$i + 1))
                                   )
                               }
                             } else {
-                              _vm.$set(_vm.settings, "applyChildAsParent", $$c)
+                              _vm.$set(
+                                _vm.settings,
+                                "apply_child_as_parent",
+                                $$c
+                              )
                             }
                           }
                         }
                       }),
                       _vm._v(" "),
-                      _c("label", { attrs: { for: "applyChildAsParent" } }, [
+                      _c("label", { attrs: { for: "apply_child_as_parent" } }, [
                         _vm._v(" Apply Child As Parent")
                       ])
                     ]),

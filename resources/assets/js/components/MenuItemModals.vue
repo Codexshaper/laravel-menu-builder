@@ -126,8 +126,8 @@
                                 <label for="levels" class="cs-label">Levels</label>
                             </div>
                             <div class="form-group">
-                                <input type="checkbox" name="applyChildAsParent" id="applyChildAsParent" v-model="settings.applyChildAsParent">
-                                <label for="applyChildAsParent"> Apply Child As Parent</label>
+                                <input type="checkbox" name="apply_child_as_parent" id="apply_child_as_parent" v-model="settings.apply_child_as_parent">
+                                <label for="apply_child_as_parent"> Apply Child As Parent</label>
                             </div>
                             <div class="mo-footer pull-right">
                                 <button type="button" class="btn btn-danger cs-danger" data-dismiss="modal">Close</button>

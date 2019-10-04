@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateMenuSettingsTable extends Migration
 {
@@ -17,7 +17,7 @@ class CreateMenuSettingsTable extends Migration
             $table->increments('id');
             $table->integer('menu_id')->nullable();
             $table->string('depth')->default(5);
-            $table->boolean('applyChildAsParent')->default(false);
+            $table->boolean('apply_child_as_parent')->default(0);
             $table->text('levels')->nullable();
             $table->timestamps();
         });

@@ -81,13 +81,11 @@
                     target: '_self',
                     parent_id: '',
                     custom_class: '',
-                    applyChildAsParent: false
+                    apply_child_as_parent: 0
                 },
                 childrens: [],
                 parents: [],
-                settings: {
-                    applyChildAsParent: false
-                },
+                settings: {},
                 defaultSettings: {},
                 successMsg: '',
                 renderComponent: true,
@@ -117,6 +115,7 @@
                         self.items = res.data.items;
                         self.settings = res.data.settings;
                         self.settings.menu_id = self.menu.id;
+                        self.settings.apply_child_as_parent = parseInt(self.settings.apply_child_as_parent);
                         self.settings.levels = JSON.stringify(self.settings.levels, null, 4);
                         self.defaultSettings = res.data.default;
                         self.renderComponent = true;
@@ -168,7 +167,7 @@
                     if( res.data.success == true ) {
                         self.item = res.data.item;
                         self.item.parent_id = (res.data.item.parent_id) ? res.data.item.parent_id : '';
-                        self.item.applyChildAsParent = self.settings.applyChildAsParent;
+                        self.item.apply_child_as_parent = parseInt(self.settings.apply_child_as_parent);
                         self.childrens = res.data.childrens;
                         self.parents = res.data.parents;
                     }

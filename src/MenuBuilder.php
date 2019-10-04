@@ -31,10 +31,10 @@ class MenuBuilder
         : ((!empty($defaultSettings) && $defaultSettings->depth)
             ? $defaultSettings->depth : config('menu.depth'));
 
-        $applyChildAsParent = (!empty($settings) && $settings->applyChildAsParent)
-        ? $settings->applyChildAsParent
-        : ((!empty($defaultSettings) && $defaultSettings->applyChildAsParent)
-            ? $defaultSettings->applyChildAsParent : config('menu.apply_child_as_parent'));
+        $apply_child_as_parent = (!empty($settings) && $settings->apply_child_as_parent)
+        ? $settings->apply_child_as_parent
+        : ((!empty($defaultSettings) && $defaultSettings->apply_child_as_parent)
+            ? $defaultSettings->apply_child_as_parent : config('menu.apply_child_as_parent'));
 
         $levels = (!empty($settings) && $settings->levels)
         ? $settings->levels
@@ -42,9 +42,9 @@ class MenuBuilder
             ? $defaultSettings->levels : config('menu.levels'));
 
         return [
-            'depth'              => $depth,
-            'applyChildAsParent' => $applyChildAsParent,
-            'levels'             => $levels,
+            'depth'                 => $depth,
+            'apply_child_as_parent' => $apply_child_as_parent,
+            'levels'                => $levels,
         ];
     }
 
