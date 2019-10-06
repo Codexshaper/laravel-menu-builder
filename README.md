@@ -61,4 +61,7 @@ See also the list of [contributors](https://github.com/laravel-menu-builder/cont
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 - **[MIT license](http://opensource.org/licenses/mit-license.php)**
-- Copyright 2019 © <a href="https://github.com/Codexshaper/laravel-menu-builder/blob/master/README.md" target="_blank">CodexShaper</a>.
+- Copyright 2019 © <a href="https://github.com/Codexshaper/laravel-menu-builder/blob/master/LICENSE" target="_blank">CodexShaper</a>.
+
+## Thanks
+* *Special Thanks to* <a href="https://github.com/the-control-group/voyager"> **Voyager** </a> *for awesome design concept*
