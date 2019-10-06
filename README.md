@@ -3,39 +3,31 @@ Laravel Menu Builder with VueJs and jQuery. Build your multi level menu within 5
 
 ![thumbnail.jpg](https://imgbbb.com/images/2019/10/03/thumbnail.jpg)
 
-## Demo http://demo.codexshaper.com/admin/menus
+### Demo http://demo.codexshaper.com/admin/menus
 
-## Installation: https://youtu.be/1-IHy1Xur-I
-
-## Configuration: https://youtu.be/0Nvoc3hzCug
-
-## Build Menu: https://youtu.be/iA8JVR9QV_0
-
-## How to Use: https://youtu.be/_7rxHe_a1mI
-
-## Install the Package
+### Install the Package
 
 ```
 composer require codexshaper/laravel-menu-builder
 ```
 
-## Optional:
+### Optional:
 
     - If your mysql version is old then follow next steps
        * Goto `app\Providers\AppServiceProvider.php` and open it in your text editor
        * Add `use Illuminate\Support\Facades\Schema;` on top under namespace
        * Add `Schema::defaultStringLength(191);` in your boot method
        
-## Publish Resource, Configs, Migration and Seeding Database in a single command
+#### Publish Resource, Configs, Migration and Seeding Database in a single command
 
 ```
 php artisan menu:install
 ```
-## run `php artisan serve`
+#### run `php artisan serve`
 
-## for check menus go to `http://127.0.0.1:8000/admin/menus` . You can change `admin` prefix from `config/menu.php`
+#### To check menus go to `http://127.0.0.1:8000/admin/menus` . You can change `admin` prefix from `config/menu.php`
 
-## How to use Menu in your site? You can choose any one from two uses
+#### How to use Menu in your site? You can choose any one from two uses
 
 Use 1:
 ```
@@ -58,4 +50,4 @@ JS: <script src="{{ menu_asset('js/app.js') }}"></script>
 ```
 
 # Credits
-#Designed by @mahabubul1 Alam and concept inspired from voyager `https://github.com/the-control-group/voyager`
+#### Designed by @mahabubul1 Alam and concept inspired from voyager `https://github.com/the-control-group/voyager`
