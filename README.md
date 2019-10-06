@@ -49,5 +49,16 @@ CSS: <link rel="stylesheet" type="text/css" href="{{ menu_asset('css/app.css') }
 JS: <script src="{{ menu_asset('js/app.js') }}"></script>
 ```
 
-# Credits
-#### Designed by @mahabubul1 Alam and design concept inspired from voyager
+## Authors
+
+* **Md Abu Ahsan Basir** - *Main Developer* - [github](https://github.com/maab16)
+* **Mahabubul Alam** - *Main designer* - [github](https://github.com/mahabubul1)
+
+See also the list of [contributors](https://github.com/laravel-menu-builder/contributors) who participated in this project.
+
+## License
+
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+
+- **[MIT license](http://opensource.org/licenses/mit-license.php)**
+- Copyright 2019 © <a href="https://github.com/Codexshaper/laravel-menu-builder/blob/master/README.md" target="_blank">CodexShaper</a>.
