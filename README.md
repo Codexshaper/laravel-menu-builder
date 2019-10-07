@@ -27,16 +27,16 @@ php artisan menu:install
 
 #### To check menus go to `http://127.0.0.1:8000/admin/menus` . You can change `admin` prefix from `config/menu.php`
 
-#### How to use Menu in your site? You can choose any one from two uses
+#### How to use Menu in your site?
 
-Use 1:
+Option 1:
 ```
 @extends('menu::layouts.app')
 @section('content')
     {{ menu('name') }}
 @endsection
 ```
-Use 2:
+Option 2:
 1. Call Menu anywhere on your site by calling `{{ menu('name') }}` or `@menu('name')`
 2. Link CSS and JS if you want to use our default design 
 ```
