@@ -1,5 +1,5 @@
 # Laravel Menu Builder
-Laravel Menu Builder with VueJs and jQuery. Build your multi level menu within 5 mins.
+Laravel Menu Builder with VueJs and jQuery. Build your multi level menu within 5 minutes.
 
 ![thumbnail.jpg](https://imgbbb.com/images/2019/10/03/thumbnail.jpg)
 
