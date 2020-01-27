@@ -8,7 +8,7 @@
                            v-on:click="showAddMenuForm"
                            class="btn btn-success mat-raised-button" 
                            data-toggle="modal" 
-                           data-target="#addMenuModal"><i class="material-icons">adds</i> Add Item</button>
+                           data-target="#addMenuModal"><i class="material-icons">adds</i> Add Menu</button>
                      </div>
                      <div class="col-md-12">
                         <div class="use-menu">

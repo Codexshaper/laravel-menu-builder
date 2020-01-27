@@ -58969,7 +58969,7 @@ var render = function() {
                     _c("i", { staticClass: "material-icons" }, [
                       _vm._v("adds")
                     ]),
-                    _vm._v(" Add Item")
+                    _vm._v(" Add Menu Item")
                   ]
                 ),
                 _vm._v(" "),
@@ -60607,7 +60607,7 @@ var render = function() {
                 },
                 [
                   _c("i", { staticClass: "material-icons" }, [_vm._v("adds")]),
-                  _vm._v(" Add Item")
+                  _vm._v(" Add Menu")
                 ]
               )
             ]),

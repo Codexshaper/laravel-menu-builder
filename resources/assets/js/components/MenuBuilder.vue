@@ -9,7 +9,7 @@
                                 v-on:click="showAddMenuItemForm"
                                 class="btn btn-success" 
                                 data-toggle="modal" 
-                                data-target="#addMenuItemModal"><i class="material-icons">adds</i> Add Item</button>
+                                data-target="#addMenuItemModal"><i class="material-icons">adds</i> Add Menu Item</button>
                             <button  
                                 v-on:click="showSettingsForm"
                                 class="btn btn-info edit-info" 
