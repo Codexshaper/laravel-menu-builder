@@ -1,5 +1,7 @@
 <?php
+
 return [
+    'base_url'                => '',
     'prefix'                => '/admin',
     'namespace'             => '\CodexShaper\Menu',
     'controller_namespace'  => '\CodexShaper\Menu\Http\Controllers',
