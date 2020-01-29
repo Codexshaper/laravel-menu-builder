@@ -14,6 +14,12 @@ if (!function_exists('menu_prefix')) {
     }
 }
 
+if(! function_exists('menu_base_url')) {
+    function menu_base_url(){
+        return config('menu.base_url') ?? 'http://localhost'; 
+    }
+}
+
 if (!function_exists('menu_settings')) {
     function menu_settings($menu_id)
     {
