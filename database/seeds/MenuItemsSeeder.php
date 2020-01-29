@@ -28,6 +28,10 @@ class MenuItemsSeeder extends Seeder
         $menuItem->url          = "/admin/menus";
         $menuItem->parent_id    = null;
         $menuItem->order        = 1;
+        $menuItem->route        = 'admin.menus';
+        $menuItem->params       = null;
+        $menuItem->middleware   = null;
+        $menuItem->controller   = '\CodexShaper\Menu\Http\Controllers\MenuController@index';
         $menuItem->target       = '_self';
         $menuItem->icon         = null;
         $menuItem->custom_class = null;
