@@ -82,7 +82,7 @@ class InstallMenuBuilder extends Command
         if (false === strpos($routes_contents, 'MenuBuilder::routes();')) {
             $filesystem->append(
                 base_path('routes/web.php'),
-                "\n\nRoute::group(['prefix' => config('menu.prefix')], function () {\n    MenuBuilder::routes();\n});\n"
+                "\n\nMenuBuilder::routes();\n"
             );
         }
 
