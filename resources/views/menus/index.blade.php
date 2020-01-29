@@ -23,7 +23,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                          <nest-menu prefix="{{ base_url().menu_prefix() }}"></nest-menu>
+                          <nest-menu prefix="{{ menu_base_url().menu_prefix() }}"></nest-menu>
                         </div>
                     </div>
                  </div>

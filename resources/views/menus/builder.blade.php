@@ -22,7 +22,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                          <draggable-menu :menu="{{ $menu }}" prefix="{{ base_url().menu_prefix() }}"></draggable-menu>
+                          <draggable-menu :menu="{{ $menu }}" prefix="{{ menu_base_url().menu_prefix() }}"></draggable-menu>
                         </div>
                     </div>
                  </div>
