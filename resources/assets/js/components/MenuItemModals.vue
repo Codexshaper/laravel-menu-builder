@@ -18,6 +18,54 @@
                                 <label for="add_menu_item_url" class="cs-label">URL</label>
                             </div>
                             <div class="form-group">
+                                <input type="text" name="route" class="form-control input-field" id="add_menu_item_route" v-model="item.route">
+                                <label for="add_menu_item_route" class="cs-label">Route</label>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-info edit-info btn-block d-flex" type="button">
+                                    <span class="text-left mr-auto">Params</span> 
+                                    <span 
+                                        class="text-right ml-auto" 
+                                        data-target="#addParams" 
+                                        data-toggle="collapse" 
+                                        aria-expanded="false" 
+                                        aria-controls="addParams" 
+                                        @click="showCollapse = !showCollapse ">
+                                            {{ showCollapse ? 'hide' : 'open' }}
+                                    </span>
+                                  </button>
+                                <div class="collapse" id="addParams">
+                                  <div class="card card-body" style="padding-left: 0px; padding-right: 0px">
+                                    <div class="param-field">
+                                        <div v-for="(paramItem, index) in item.paramItems" :key="index" class="form-group row">
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control input-field" id="param_key" v-model="paramItem.key">
+                                                <label for="param_key" class="cs-label">Key</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control input-field" id="param_value" v-model="paramItem.value">
+                                                <label for="param_value" class="cs-label">Value</label>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-danger" @click="removeParam(index)"><i class="fa fa-trash"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pl-3">
+                                        <button type="button" class="btn btn-success" value="Add Param" @click="addParam">Add Param</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="controller" class="form-control input-field" id="add_menu_item_controller" v-model="item.controller">
+                                <label for="add_menu_item_controller" class="cs-label">Controller</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control input-field" id="add_menu_item_controller" v-model="item.middleware">
+                                <label for="add_menu_item_controller" class="cs-label">Permission (Middleware)</label>
+                            </div>
+                            <div class="form-group">
                                 <select name="target" id="add_menu_item_target" v-model="item.target" class="form-control input-field mb-2 ">
                                     <option value="_self">Same Tab</option>
                                     <option value="_blank">New Tab</option>
@@ -64,6 +112,54 @@
                             <div class="form-group">
                                 <input type="text" name="url" class="form-control input-field " v-model="item.url" />
                                 <label for="url" class="cs-label">URL</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="route" class="form-control input-field" id="add_menu_item_route" v-model="item.route">
+                                <label for="add_menu_item_route" class="cs-label">Route</label>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-info edit-info btn-block d-flex" type="button">
+                                    <span class="text-left mr-auto">Params</span> 
+                                    <span 
+                                        class="text-right ml-auto" 
+                                        data-target="#updateParams" 
+                                        data-toggle="collapse" 
+                                        aria-expanded="false" 
+                                        aria-controls="updateParams" 
+                                        @click="showCollapse = !showCollapse ">
+                                            {{ showCollapse ? 'hide' : 'open' }}
+                                    </span>
+                                  </button>
+                                <div class="collapse" id="updateParams">
+                                  <div class="card card-body my-0 px-0">
+                                    <div class="param-field">
+                                        <div v-for="(paramItem, index) in item.paramItems" :key="index" class="form-group row">
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control input-field" id="param_key" v-model="paramItem.key">
+                                                <label for="param_key" class="cs-label">Key</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control input-field" id="param_value" v-model="paramItem.value">
+                                                <label for="param_value" class="cs-label">Value</label>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-danger" @click="removeParam(index)"><i class="fa fa-trash"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pl-3">
+                                        <button type="button" class="btn btn-success" value="Add Param" @click="addParam">Add Param</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="controller" class="form-control input-field" id="add_menu_item_controller" v-model="item.controller">
+                                <label for="add_menu_item_controller" class="cs-label">Controller</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control input-field" id="add_menu_item_controller" v-model="item.middleware">
+                                <label for="add_menu_item_controller" class="cs-label">Permission (Middleware)</label>
                             </div>
                             <div class="form-group">
                                 <select name="target" id="edit_menu_item_target" class="form-control input-field " v-model="item.target">
@@ -174,6 +270,35 @@
             addMenuItem: Function,
             addMenuSetting: Function,
         },
-        name: 'menu-item-modals'
+        name: 'menu-item-modals',
+        data(){
+            return {
+                showCollapse : false
+            }
+        },
+        methods: {
+            addParam: function(){
+                let paramItems = [...this.item.paramItems];
+                Vue.delete(this.item, 'paramItems');
+                paramItems.push({key:'',value: ''});
+                this.item.paramItems = paramItems;
+            },
+            removeParam(index) {
+                console.log(index);
+                let paramItems = [...this.item.paramItems];
+                paramItems.splice(index, 1);
+                Vue.delete(this.item, 'paramItems');
+                this.item.paramItems = paramItems;
+            },
+        }
     }
 </script>
+
+<style scoped="scoped">
+    .modal-dialog {
+        max-width: 700px;
+    }
+    .btn.btn-info {
+        box-shadow: none;
+    }
+</style>

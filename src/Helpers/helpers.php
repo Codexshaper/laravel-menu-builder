@@ -21,6 +21,23 @@ if (!function_exists('menu_settings')) {
     }
 }
 
+if(!function_exists('menu_url')) {
+    function menu_url($menu) {
+        $url = $menu->url ?? '#';
+        if($menu->route) {
+            $route = $menu->route;
+            $params = json_decode( $menu->params, true );
+            if(is_array($params) && count($params) > 0) {
+               $url = route($menu->route, $params);
+            }else {
+                $url = route($menu->route);
+            }
+        }
+
+        return url($url);
+    }
+}
+
 if (!function_exists('menu')) {
     function menu($name)
     {

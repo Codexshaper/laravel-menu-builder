@@ -1,6 +1,6 @@
 
 <li data-id="{{$menu->id}}" class="menu_item">
-    <a href="{{ ($menu->url != '') ? $menu->url : '#' }}">
+    <a href="{{ menu_url($menu) }}">
         <span class="menu-icon"></span>{!! $menu->icon !!}
         <span class="menu-title">{{ $menu->title }}</span>
     </a>

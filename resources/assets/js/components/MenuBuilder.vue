@@ -78,6 +78,11 @@
                     id: '',
                     title: '',
                     url: '',
+                    route: '',
+                    params: '',
+                    paramItems: [],
+                    controller: '',
+                    middleware: '',
                     target: '_self',
                     parent_id: '',
                     custom_class: '',
@@ -133,10 +138,12 @@
                 let url = this.prefix+'/menu/item';
                 let self = this;
 
+                this.prepareParams()
+
                 axios({
                   method: 'post',
                   url: url,
-                  data: item,
+                  data: this.item,
                   responseType: 'json',
                 })
                 .then(res => {
@@ -170,6 +177,8 @@
                         self.item.apply_child_as_parent = parseInt(self.settings.apply_child_as_parent);
                         self.childrens = res.data.childrens;
                         self.parents = res.data.parents;
+
+                        this.setUpParams()
                     }
                 })
                 .catch(err => console.log(err));
@@ -179,10 +188,12 @@
                 var self = this;
                 var url = this.prefix+'/menu/item';
 
+                this.prepareParams()
+
                 axios({
                     method: 'put',
                     url: url,
-                    data: item,
+                    data: this.item,
                 })
                 .then(res => {
                     if( res.data.success == true ) {
@@ -257,11 +268,33 @@
                 })
                 .catch(err => console.log(err));
             },
+            prepareParams: function(){
+                let params = {};
+                for(let paramItem of this.item.paramItems) {
+                    if(paramItem.key.length > 0) {
+                        params[paramItem.key] = paramItem.value
+                    }
+                }
+                this.item.params = JSON.stringify(params);
+            },
+            setUpParams: function(){
+                this.item.paramItems = []
+                let params = JSON.parse(this.item.params);
+                for(let param in params) {
+                    console.log(param);
+                    this.item.paramItems.push({key:param,value: params[param]})
+                }
+            },
             resetForm: function(){
                 this.item.menu_id = this.menu.id;
                 this.item.id = '';
                 this.item.title = '';
                 this.item.url = '';
+                this.item.route = '';
+                this.item.params = '';
+                this.item.paramItems = [];
+                this.item.controller = '';
+                this.item.middleware = '';
                 this.item.target = '_self';
                 this.item.parent_id = '';
                 this.item.icon = '';

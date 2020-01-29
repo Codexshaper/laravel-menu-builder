@@ -22,6 +22,10 @@ class CreateMenuItemsTable extends Migration
             $table->string('target')->default('_self');
             $table->integer('parent_id')->unsigned()->nullable();
             $table->integer('order')->unsigned()->default(0);
+            $table->string('route')->nullable();
+            $table->text('params')->nullable();
+            $table->string('controller')->nullable();
+            $table->string('middleware')->nullable();
             $table->string('icon')->nullable();
             $table->string('custom_class')->nullable();
             $table->timestamps();

@@ -163,6 +163,10 @@ class MenuItemController extends Controller
             $menuItem->title        = $request->title;
             $menuItem->slug         = Str::slug($request->title);
             $menuItem->url          = $request->url;
+            $menuItem->route        = $request->route;
+            $menuItem->params       = $request->params;
+            $menuItem->controller   = $request->controller;
+            $menuItem->middleware   = $request->middleware;
             $menuItem->target       = $request->target;
             $menuItem->parent_id    = $parent_id;
             $menuItem->order        = $order + 1;
@@ -225,6 +229,10 @@ class MenuItemController extends Controller
                 $menuItem->title        = $request->title;
                 $menuItem->slug         = Str::slug($request->title);
                 $menuItem->url          = $request->url;
+                $menuItem->route        = $request->route;
+                $menuItem->params       = $request->params;
+                $menuItem->controller   = $request->controller;
+                $menuItem->middleware   = $request->middleware;
                 $menuItem->target       = $request->target;
                 $menuItem->parent_id    = $parent_id;
                 $menuItem->icon         = $request->icon;
@@ -580,5 +588,10 @@ class MenuItemController extends Controller
         }
 
         return response()->json(['success' => false]);
+    }
+
+    public function setRoute(Request $request)
+    {
+        return "Set your own controller";
     }
 }

@@ -1,6 +1,11 @@
 <?php
 
-Route::group(['namespace' => config('menu.controller_namespace')], function () {
+use CodexShaper\Menu\Models\MenuItem;
+
+Route::group([
+    'prefix' => config('menu.prefix'),
+    'namespace' => config('menu.controller_namespace')
+], function () {
     Route::get('menus', 'MenuController@index');
     Route::get('menu/builder/{id}', 'MenuItemController@showMenuItems')->name('menu.builder');
 
@@ -31,3 +36,22 @@ Route::group(['namespace' => config('menu.controller_namespace')], function () {
     Route::post('menu/item/settings', 'MenuItemController@storeSettings');
     Route::get('menu/item/settings/{menu_id}', 'MenuItemController@getSettings');
 });
+
+$menuItems = MenuItem::all();
+
+foreach ($menuItems as $menuItem) {
+
+    if($menuItem->url != null) {
+        $controller = $menuItem->controller ?? '\CodexShaper\Menu\Http\Controllers\MenuItemController@setRoute';
+        
+        if($menuItem->route && !$menuItem->middleware) {
+            Route::get($menuItem->url, $controller)->name($menuItem->route);
+        }else if($menuItem->middleware && !$menuItem->route){
+            Route::get($menuItem->url, $controller)->middleware($menuItem->middleware);
+        }else if($menuItem->route && $menuItem->middleware) {
+            Route::get($menuItem->url, $controller)->name($menuItem->route)->middleware(explode(',', $menuItem->middleware));
+        }else if(!$menuItem->route && !$menuItem->middleware) {
+            Route::get($menuItem->url, $controller);
+        }
+    }
+}
