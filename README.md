@@ -1,3 +1,6 @@
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/Codexshaper/laravel-menu-builder.svg?style=flat-square)](https://packagist.org/packages/Codexshaper/laravel-menu-builder)
+
 # Laravel Menu Builder
 Laravel Menu Builder with VueJs and jQuery. Build your multi level menu within 5 minutes.
 
