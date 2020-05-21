@@ -3,7 +3,7 @@
 if (!function_exists('menu_asset')) {
     function menu_asset($path, $secure = null)
     {
-        return route('menu.asset') . '?path=' . urlencode($path);
+        return route('menu.asset').'?path='.urlencode($path);
     }
 }
 
@@ -14,9 +14,10 @@ if (!function_exists('menu_prefix')) {
     }
 }
 
-if(! function_exists('menu_base_url')) {
-    function menu_base_url(){
-        return config('menu.base_url') ?? 'http://localhost'; 
+if (!function_exists('menu_base_url')) {
+    function menu_base_url()
+    {
+        return config('menu.base_url') ?? 'http://localhost';
     }
 }
 
@@ -27,15 +28,16 @@ if (!function_exists('menu_settings')) {
     }
 }
 
-if(!function_exists('menu_url')) {
-    function menu_url($menu) {
+if (!function_exists('menu_url')) {
+    function menu_url($menu)
+    {
         $url = $menu->url ?? '#';
-        if($menu->route) {
+        if ($menu->route) {
             $route = $menu->route;
-            $params = json_decode( $menu->params, true );
-            if(is_array($params) && count($params) > 0) {
-               $url = route($menu->route, $params);
-            }else {
+            $params = json_decode($menu->params, true);
+            if (is_array($params) && count($params) > 0) {
+                $url = route($menu->route, $params);
+            } else {
                 $url = route($menu->route);
             }
         }
@@ -57,7 +59,7 @@ if (!function_exists('menu_array_key_exists')) {
         foreach ($array as $index => $value) {
             if ($key == $index) {
                 return true;
-            } else if (is_array($value) && menu_array_key_exists($key, $value)) {
+            } elseif (is_array($value) && menu_array_key_exists($key, $value)) {
                 return true;
             }
         }
@@ -82,11 +84,11 @@ if (!function_exists('menu_lebel_style')) {
             } else {
                 return $levels['child']['style'];
             }
-        } else if (menu_array_key_exists('style', $levels['child'])) {
+        } elseif (menu_array_key_exists('style', $levels['child'])) {
             return $levels['child']['style'];
         }
 
-        return "";
+        return '';
     }
 }
 
@@ -99,11 +101,11 @@ if (!function_exists('menu_lebel_show')) {
             } else {
                 return $levels['child']['show'];
             }
-        } else if (menu_array_key_exists('show', $levels['child'])) {
+        } elseif (menu_array_key_exists('show', $levels['child'])) {
             return $levels['child']['show'];
         }
 
-        return "";
+        return '';
     }
 }
 
@@ -116,10 +118,10 @@ if (!function_exists('menu_lebel_position')) {
             } else {
                 return $levels['child']['position'];
             }
-        } else if (menu_array_key_exists('position', $levels['child'])) {
+        } elseif (menu_array_key_exists('position', $levels['child'])) {
             return $levels['child']['position'];
         }
 
-        return "";
+        return '';
     }
 }

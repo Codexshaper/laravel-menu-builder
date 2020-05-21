@@ -12,11 +12,11 @@ class MenuSettingsSeeder extends Seeder
      */
     public function run()
     {
-        $settings                        = new MenuSetting;
-        $settings->menu_id               = null;
-        $settings->depth                 = 5;
+        $settings = new MenuSetting();
+        $settings->menu_id = null;
+        $settings->depth = 5;
         $settings->apply_child_as_parent = 0;
-        $settings->levels                = [
+        $settings->levels = [
             'root'  => [
                 'style' => 'vertical', // horizontal | vertical
             ],

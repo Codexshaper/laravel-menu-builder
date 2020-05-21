@@ -3,8 +3,8 @@
 use CodexShaper\Menu\Models\MenuItem;
 
 Route::group([
-    'prefix' => config('menu.prefix'),
-    'namespace' => config('menu.controller_namespace')
+    'prefix'    => config('menu.prefix'),
+    'namespace' => config('menu.controller_namespace'),
 ], function () {
     Route::get('menus', 'MenuController@index');
     Route::get('menu/builder/{id}', 'MenuItemController@showMenuItems')->name('menu.builder');
@@ -40,22 +40,20 @@ Route::group([
 $menuItems = MenuItem::all();
 
 foreach ($menuItems as $menuItem) {
-
-    if($menuItem->url != null) {
-
+    if ($menuItem->url != null) {
         $controller = $menuItem->controller ?? '\CodexShaper\Menu\Http\Controllers\MenuItemController@setRoute';
 
-        if (! class_exists($controller)) {
+        if (!class_exists($controller)) {
             $controller = '\CodexShaper\Menu\Http\Controllers\MenuItemController@setRoute';
         }
-        
-        if($menuItem->route && !$menuItem->middleware) {
+
+        if ($menuItem->route && !$menuItem->middleware) {
             Route::get($menuItem->url, $controller)->name($menuItem->route);
-        }else if($menuItem->middleware && !$menuItem->route){
+        } elseif ($menuItem->middleware && !$menuItem->route) {
             Route::get($menuItem->url, $controller)->middleware($menuItem->middleware);
-        }else if($menuItem->route && $menuItem->middleware) {
+        } elseif ($menuItem->route && $menuItem->middleware) {
             Route::get($menuItem->url, $controller)->name($menuItem->route)->middleware(explode(',', $menuItem->middleware));
-        }else if(!$menuItem->route && !$menuItem->middleware) {
+        } elseif (!$menuItem->route && !$menuItem->middleware) {
             Route::get($menuItem->url, $controller);
         }
     }

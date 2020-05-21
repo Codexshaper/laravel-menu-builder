@@ -2,11 +2,11 @@
 
 return [
     'base_url'                => '',
-    'prefix'                => '/admin',
-    'namespace'             => '\CodexShaper\Menu',
-    'controller_namespace'  => '\CodexShaper\Menu\Http\Controllers',
-    'resources_path'        => 'vendor/codexshaper/laravel-menu-builder/publishable/assets/',
-    'views'                 => 'vendor/codexshaper/laravel-menu-builder/publishable/views',
+    'prefix'                  => '/admin',
+    'namespace'               => '\CodexShaper\Menu',
+    'controller_namespace'    => '\CodexShaper\Menu\Http\Controllers',
+    'resources_path'          => 'vendor/codexshaper/laravel-menu-builder/publishable/assets/',
+    'views'                   => 'vendor/codexshaper/laravel-menu-builder/publishable/views',
     // Menu Settings
     'depth'                 => 5,
     'apply_child_as_parent' => false,

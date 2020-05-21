@@ -1,4 +1,5 @@
 <?php
+
 namespace CodexShaper\Menu\Commands;
 
 use CodexShaper\Menu\MenuServiceProvider;
@@ -26,10 +27,10 @@ class InstallMenuBuilder extends Command
      *
      * @var string
      */
-    protected $seedersPath = __DIR__ . '/../../database/seeds/';
+    protected $seedersPath = __DIR__.'/../../database/seeds/';
 
     /**
-     * Get Option
+     * Get Option.
      *
      * @return array
      */
@@ -47,9 +48,10 @@ class InstallMenuBuilder extends Command
      */
     protected function findComposer()
     {
-        if (file_exists(getcwd() . '/composer.phar')) {
-            return '"' . PHP_BINARY . '" ' . getcwd() . '/composer.phar';
+        if (file_exists(getcwd().'/composer.phar')) {
+            return '"'.PHP_BINARY.'" '.getcwd().'/composer.phar';
         }
+
         return 'composer';
     }
 
@@ -72,7 +74,7 @@ class InstallMenuBuilder extends Command
 
         $this->info('Dumping the autoloaded files and reloading all new files');
         $composer = $this->findComposer();
-        $process  = Process::fromShellCommandline($composer . ' dump-autoload');
+        $process = Process::fromShellCommandline($composer.' dump-autoload');
         $process->setTimeout(null); // Setting timeout to null to prevent installation from stopping at a certain point in time
         $process->setWorkingDirectory(base_path())->run();
 
@@ -88,7 +90,7 @@ class InstallMenuBuilder extends Command
 
         // Seeding Dummy Data
         $class = 'MenuDatabaseSeeder';
-        $file  = $this->seedersPath . $class . '.php';
+        $file = $this->seedersPath.$class.'.php';
 
         if (file_exists($file) && !class_exists($class)) {
             require_once $file;

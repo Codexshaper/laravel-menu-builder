@@ -4,7 +4,8 @@ use Illuminate\Database\Seeder;
 
 class MenuDatabaseSeeder extends Seeder
 {
-    protected $seedersPath = __DIR__ . '/../../database/seeds/';
+    protected $seedersPath = __DIR__.'/../../database/seeds/';
+
     /**
      * Seed the application's database.
      *
@@ -18,8 +19,7 @@ class MenuDatabaseSeeder extends Seeder
         ];
 
         foreach ($seeds as $class) {
-
-            $file = $this->seedersPath . $class . '.php';
+            $file = $this->seedersPath.$class.'.php';
             if (file_exists($file) && !class_exists($class)) {
                 require_once $file;
             }

@@ -13,6 +13,7 @@ class MenuController extends Controller
     public function index()
     {
         $menus = Menu::all();
+
         return view('menu::menus.index', compact('menus'));
     }
 
@@ -40,11 +41,13 @@ class MenuController extends Controller
     {
         if ($request->id) {
             $menu = Menu::find($request->id);
+
             return response()->json([
                 'success' => true,
                 'menu'    => $menu,
             ]);
         }
+
         return response()->json(['success' => false]);
     }
 
@@ -52,6 +55,7 @@ class MenuController extends Controller
     {
         if ($request->ajax()) {
             $html = \MenuBuilder::generateMenu($request->id);
+
             return response()->json([
                 'success' => true,
                 'html'    => $html,
@@ -62,43 +66,44 @@ class MenuController extends Controller
     /**
      * Create new menu.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         if ($request->ajax()) {
-
             if (($errors = $this->validation($request->all())) !== true) {
                 return $errors;
             }
 
-            $order              = Menu::max('order');
-            $menu               = new Menu;
-            $menu->name         = $request->name;
-            $menu->slug         = Str::slug($request->name);
-            $menu->url          = $request->url;
-            $menu->order        = $order + 1;
+            $order = Menu::max('order');
+            $menu = new Menu();
+            $menu->name = $request->name;
+            $menu->slug = Str::slug($request->name);
+            $menu->url = $request->url;
+            $menu->order = $order + 1;
             $menu->custom_class = $request->custom_class;
 
             if ($menu->save()) {
                 $menus = Menu::all();
+
                 return response()->json([
                     'success' => true,
                 ]);
             }
         }
+
         return response()->json([
             'success' => false,
-            'errors'  => ["There is no ajax call"],
+            'errors'  => ['There is no ajax call'],
         ]);
     }
 
     /**
      * Sort menu list.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -109,7 +114,7 @@ class MenuController extends Controller
             $order = 1;
 
             foreach ($menus as $item) {
-                $menu        = Menu::find($item['id']);
+                $menu = Menu::find($item['id']);
                 $menu->order = $order;
 
                 if ($menu->update()) {
@@ -121,6 +126,7 @@ class MenuController extends Controller
                 'success' => true,
             ]);
         }
+
         return response()->json([
             'success' => true,
         ]);
@@ -129,7 +135,7 @@ class MenuController extends Controller
     /**
      * Update the specified menu.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -140,9 +146,9 @@ class MenuController extends Controller
         }
 
         if ($request->id && $menu = Menu::find($request->id)) {
-            $menu->name         = $request->name;
-            $menu->slug         = Str::slug($request->name);
-            $menu->url          = $request->url;
+            $menu->name = $request->name;
+            $menu->slug = Str::slug($request->name);
+            $menu->url = $request->url;
             $menu->custom_class = $request->custom_class;
 
             if ($menu->update()) {
@@ -153,13 +159,14 @@ class MenuController extends Controller
                 ]);
             }
         }
+
         return response()->json(['success' => false]);
     }
 
     /**
-     * Delete the specified menu
+     * Delete the specified menu.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -175,13 +182,14 @@ class MenuController extends Controller
                 ]);
             }
         }
+
         return response()->json(['success' => true]);
     }
 
     /**
-     * Validation
+     * Validation.
      *
-     * @param  object $data
+     * @param object $data
      *
      * @return \Illuminate\Http\Response|true
      */
@@ -202,9 +210,9 @@ class MenuController extends Controller
     }
 
     /**
-     * Load menu builder assests
+     * Load menu builder assests.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
