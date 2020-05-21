@@ -42,7 +42,12 @@ $menuItems = MenuItem::all();
 foreach ($menuItems as $menuItem) {
 
     if($menuItem->url != null) {
+
         $controller = $menuItem->controller ?? '\CodexShaper\Menu\Http\Controllers\MenuItemController@setRoute';
+
+        if (! class_exists($controller)) {
+            $controller = '\CodexShaper\Menu\Http\Controllers\MenuItemController@setRoute';
+        }
         
         if($menuItem->route && !$menuItem->middleware) {
             Route::get($menuItem->url, $controller)->name($menuItem->route);
