@@ -1,4 +1,5 @@
 <?php
+
 namespace CodexShaper\Menu\Facades;
 
 use Illuminate\Support\Facades\Facade;

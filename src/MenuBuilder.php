@@ -1,4 +1,5 @@
 <?php
+
 namespace CodexShaper\Menu;
 
 use CodexShaper\Menu\Models\Menu;
@@ -12,18 +13,17 @@ class MenuBuilder
 {
     public function routes()
     {
-        require __DIR__ . '/../routes/menu.php';
+        require __DIR__.'/../routes/menu.php';
     }
 
     /**
-     *
-     * @param  int $menu_id
+     * @param int $menu_id
      *
      * @return array
      */
     public function getSettings($menu_id)
     {
-        $settings        = MenuSetting::where('menu_id', $menu_id)->first();
+        $settings = MenuSetting::where('menu_id', $menu_id)->first();
         $defaultSettings = MenuSetting::whereNull('menu_id')->first();
 
         $depth = (!empty($settings) && $settings->depth)
@@ -49,9 +49,9 @@ class MenuBuilder
     }
 
     /**
-     * Generate Menu for display
+     * Generate Menu for display.
      *
-     * @param  string $name
+     * @param string $name
      *
      * @return \Illuminate\View\View|string
      */
@@ -65,14 +65,13 @@ class MenuBuilder
             }
         }
 
-        return isset($menuHtml) ? $menuHtml : "";
-
+        return isset($menuHtml) ? $menuHtml : '';
     }
 
     /**
-     * Generate Menu for display
+     * Generate Menu for display.
      *
-     * @param  int $menu_id
+     * @param int $menu_id
      *
      * @return \Illuminate\View\View
      */
@@ -89,18 +88,17 @@ class MenuBuilder
     }
 
     /**
-     * Load assests
+     * Load assests.
      *
-     * @param  string $path
+     * @param string $path
      *
      * @return \Illuminate\Http\Response
      */
     public function assets($path)
     {
-        $file = base_path(trim(config('menu.resources_path'), '/') . "/" . urldecode($path));
+        $file = base_path(trim(config('menu.resources_path'), '/').'/'.urldecode($path));
 
         if (File::exists($file)) {
-
             switch ($extension = pathinfo($file, PATHINFO_EXTENSION)) {
                 case 'js':
                     $mimeType = 'text/javascript';
@@ -124,5 +122,4 @@ class MenuBuilder
 
         return response('', 404);
     }
-
 }

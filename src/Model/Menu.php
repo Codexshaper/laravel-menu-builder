@@ -2,7 +2,6 @@
 
 namespace CodexShaper\Menu\Models;
 
-use CodexShaper\Menu\Models\MenuItem;
 use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model

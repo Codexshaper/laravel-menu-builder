@@ -13,37 +13,37 @@ use Illuminate\Support\Str;
 
 class MenuItemController extends Controller
 {
-    protected $order      = [];
-    protected $childrens  = [];
-    protected $parents    = [];
-    protected $depth      = 0;
-    protected $root       = null;
+    protected $order = [];
+    protected $childrens = [];
+    protected $parents = [];
+    protected $depth = 0;
+    protected $root = null;
     protected $root_depth = 0;
 
     public function showMenuItems(Request $request)
     {
         $menu = Menu::find($request->id);
+
         return view('menu::menus.builder', compact('menu'));
     }
 
     /**
-     * Retrive all items for the specified menu
+     * Retrive all items for the specified menu.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
     public function getMenuItems(Request $request)
     {
         if ($request->ajax()) {
-
             if ($request->menu_id) {
                 $itemsWithChildrens = $this->getChildrens($request->menu_id);
-                $items              = MenuItem::where('menu_id', $request->menu_id)->orderBy('order', 'asc')->get();
-                $parents            = $this->checkParents($request->menu_id, $items);
-                $settings           = MenuSetting::where('menu_id', $request->menu_id)->first();
-                $defaultSettings    = MenuSetting::whereNull('menu_id')->first();
-                $menuHtml           = MenuBuilder::generateMenu($request->menu_id);
+                $items = MenuItem::where('menu_id', $request->menu_id)->orderBy('order', 'asc')->get();
+                $parents = $this->checkParents($request->menu_id, $items);
+                $settings = MenuSetting::where('menu_id', $request->menu_id)->first();
+                $defaultSettings = MenuSetting::whereNull('menu_id')->first();
+                $menuHtml = MenuBuilder::generateMenu($request->menu_id);
 
                 if (empty($settings)) {
                     $settings = $defaultSettings;
@@ -64,9 +64,9 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Retrieve single menu item
+     * Retrieve single menu item.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -77,11 +77,11 @@ class MenuItemController extends Controller
 
             if ($menuItem = MenuItem::find($request->id)) {
                 $itemsWithChildrens = $this->getChildrens($menu_id, $request->id);
-                $items              = MenuItem::where('menu_id', $menu_id)->get();
-                $childrens          = $this->getSingleDimentionChildrens($itemsWithChildrens);
-                $child_ids          = $this->getIds($childrens);
-                $depth              = $this->getDepth($itemsWithChildrens);
-                $parents            = $this->checkParentsWithChildrens($menu_id, $items, $menuItem, $depth, $child_ids);
+                $items = MenuItem::where('menu_id', $menu_id)->get();
+                $childrens = $this->getSingleDimentionChildrens($itemsWithChildrens);
+                $child_ids = $this->getIds($childrens);
+                $depth = $this->getDepth($itemsWithChildrens);
+                $parents = $this->checkParentsWithChildrens($menu_id, $items, $menuItem, $depth, $child_ids);
 
                 return response()->json([
                     'success'   => true,
@@ -98,9 +98,9 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Sort menu items
+     * Sort menu items.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -110,22 +110,22 @@ class MenuItemController extends Controller
             $items = $request->menus;
 
             foreach ($items as $item) {
-                $menuItem  = MenuItem::find($item['id']);
+                $menuItem = MenuItem::find($item['id']);
                 $parent_id = isset($item['parent_id']) ? $item['parent_id'] : null;
 
                 if ($parent_id) {
                     $this->order[$parent_id] = isset($this->order[$parent_id]) ? $this->order[$parent_id] + 1 : 1;
-                    $newOrder                = $this->order[$parent_id];
+                    $newOrder = $this->order[$parent_id];
                 }
 
                 if (!$parent_id) {
                     $this->order['root'] = isset($this->order['root']) ? $this->order['root'] + 1 : 1;
-                    $newOrder            = $this->order['root'];
+                    $newOrder = $this->order['root'];
                 }
 
                 if ($parent_id != $menuItem->id) {
                     $menuItem->parent_id = $parent_id;
-                    $menuItem->order     = $newOrder;
+                    $menuItem->order = $newOrder;
                     $menuItem->update();
                 }
             }
@@ -137,16 +137,15 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Create new menu item
+     * Create new menu item.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         if ($request->ajax()) {
-
             if (($errors = $this->validation($request->all())) !== true) {
                 return $errors;
             }
@@ -158,19 +157,19 @@ class MenuItemController extends Controller
             ? MenuItem::where('parent_id', $parent_id)->max('order')
             : MenuItem::whereNull('parent_id')->max('order');
 
-            $menuItem               = new MenuItem;
-            $menuItem->menu_id      = $request->menu_id;
-            $menuItem->title        = $request->title;
-            $menuItem->slug         = Str::slug($request->title);
-            $menuItem->url          = $request->url;
-            $menuItem->route        = $request->route;
-            $menuItem->params       = $request->params;
-            $menuItem->controller   = $request->controller;
-            $menuItem->middleware   = $request->middleware;
-            $menuItem->target       = $request->target;
-            $menuItem->parent_id    = $parent_id;
-            $menuItem->order        = $order + 1;
-            $menuItem->icon         = $request->icon;
+            $menuItem = new MenuItem();
+            $menuItem->menu_id = $request->menu_id;
+            $menuItem->title = $request->title;
+            $menuItem->slug = Str::slug($request->title);
+            $menuItem->url = $request->url;
+            $menuItem->route = $request->route;
+            $menuItem->params = $request->params;
+            $menuItem->controller = $request->controller;
+            $menuItem->middleware = $request->middleware;
+            $menuItem->target = $request->target;
+            $menuItem->parent_id = $parent_id;
+            $menuItem->order = $order + 1;
+            $menuItem->icon = $request->icon;
             $menuItem->custom_class = $request->custom_class;
 
             if ($menuItem->save()) {
@@ -182,16 +181,15 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Update the specified menu item
+     * Update the specified menu item.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
         if ($request->ajax()) {
-
             if (($errors = $this->validation($request->all())) !== true) {
                 return $errors;
             }
@@ -201,7 +199,6 @@ class MenuItemController extends Controller
 
                 // If Allow Child as a Parent
                 if ($request->apply_child_as_parent) {
-
                     foreach ($childrens as $children) {
                         $children->parent_id = $menuItem->parent_id;
                         $children->update();
@@ -226,16 +223,16 @@ class MenuItemController extends Controller
                     }
                 }
 
-                $menuItem->title        = $request->title;
-                $menuItem->slug         = Str::slug($request->title);
-                $menuItem->url          = $request->url;
-                $menuItem->route        = $request->route;
-                $menuItem->params       = $request->params;
-                $menuItem->controller   = $request->controller;
-                $menuItem->middleware   = $request->middleware;
-                $menuItem->target       = $request->target;
-                $menuItem->parent_id    = $parent_id;
-                $menuItem->icon         = $request->icon;
+                $menuItem->title = $request->title;
+                $menuItem->slug = Str::slug($request->title);
+                $menuItem->url = $request->url;
+                $menuItem->route = $request->route;
+                $menuItem->params = $request->params;
+                $menuItem->controller = $request->controller;
+                $menuItem->middleware = $request->middleware;
+                $menuItem->target = $request->target;
+                $menuItem->parent_id = $parent_id;
+                $menuItem->icon = $request->icon;
                 $menuItem->custom_class = $request->custom_class;
 
                 if ($menuItem->update()) {
@@ -248,22 +245,19 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Delete the specified menu item
+     * Delete the specified menu item.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
     {
         if ($request->ajax()) {
-
             if ($menuItem = MenuItem::find($request->id)) {
-
                 if ($childrens = $menuItem->childrens) {
-
                     foreach ($childrens as $children) {
-                        $child            = MenuItem::find($children->id);
+                        $child = MenuItem::find($children->id);
                         $child->parent_id = $menuItem->parent_id;
                         $child->save();
                     }
@@ -279,9 +273,9 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Validation
+     * Validation.
      *
-     * @param  object $data
+     * @param object $data
      *
      * @return \Illuminate\Http\Response|true
      */
@@ -303,32 +297,30 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Check Root Depths alongs parent and childrens
+     * Check Root Depths alongs parent and childrens.
      *
-     * @param  int $menu_id
-     * @param  array $items
-     * @param  object $menuItem
-     * @param  int $child_depth
-     * @param  array $ids
+     * @param int    $menu_id
+     * @param array  $items
+     * @param object $menuItem
+     * @param int    $child_depth
+     * @param array  $ids
      *
      * @return array
      */
     public function checkParentsWithChildrens($menu_id, $items, $menuItem, $child_depth = 0, $ids = [])
     {
         foreach ($items as $item) {
-
             if ($item->id != $menuItem->id) {
                 $this->root_depth = 0;
-                $depth            = $this->getRootDepth($item->id) + $child_depth;
-                $settings         = MenuSetting::where('menu_id', $menu_id)->first();
-                $defaultSettings  = MenuSetting::whereNull('menu_id')->first();
+                $depth = $this->getRootDepth($item->id) + $child_depth;
+                $settings = MenuSetting::where('menu_id', $menu_id)->first();
+                $defaultSettings = MenuSetting::whereNull('menu_id')->first();
 
                 if (empty($settings)) {
                     $settings = $defaultSettings;
                 }
 
                 if ($depth < $settings->depth) {
-
                     if ($settings->apply_child_as_parent) {
                         $this->parents[] = $item;
                     } elseif (!in_array($item->id, $ids)) {
@@ -336,17 +328,16 @@ class MenuItemController extends Controller
                     }
                 }
             }
-
         }
 
         return $this->parents;
     }
 
     /**
-     * Check Root Parent
+     * Check Root Parent.
      *
-     * @param  int $menu_id
-     * @param  array $items
+     * @param int   $menu_id
+     * @param array $items
      *
      * @return array
      */
@@ -354,9 +345,9 @@ class MenuItemController extends Controller
     {
         foreach ($items as $item) {
             $this->root_depth = 0;
-            $depth            = $this->getRootDepth($item->id);
-            $settings         = MenuSetting::where('menu_id', $menu_id)->first();
-            $defaultSettings  = MenuSetting::whereNull('menu_id')->first();
+            $depth = $this->getRootDepth($item->id);
+            $settings = MenuSetting::where('menu_id', $menu_id)->first();
+            $defaultSettings = MenuSetting::whereNull('menu_id')->first();
 
             if (empty($settings)) {
                 $settings = $defaultSettings;
@@ -371,11 +362,11 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Check Parent Depth
+     * Check Parent Depth.
      *
-     * @param  int $menu_id
-     * @param  int $parent_id
-     * @param  int $child_depth
+     * @param int $menu_id
+     * @param int $parent_id
+     * @param int $child_depth
      *
      * @return int $parent_id|null
      */
@@ -386,8 +377,8 @@ class MenuItemController extends Controller
         }
 
         // Check root parent depth limit
-        $depth           = $this->getRootDepth($parent_id) + $child_depth;
-        $settings        = MenuSetting::where('menu_id', $menu_id)->first();
+        $depth = $this->getRootDepth($parent_id) + $child_depth;
+        $settings = MenuSetting::where('menu_id', $menu_id)->first();
         $defaultSettings = MenuSetting::whereNull('menu_id')->first();
 
         if (empty($settings)) {
@@ -398,9 +389,9 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Get Root Parent Id
+     * Get Root Parent Id.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return int
      */
@@ -418,9 +409,9 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Get root depth
+     * Get root depth.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return int
      */
@@ -438,9 +429,9 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Get Children depth
+     * Get Children depth.
      *
-     * @param  array $childrens
+     * @param array $childrens
      *
      * @return int
      */
@@ -450,7 +441,6 @@ class MenuItemController extends Controller
             $this->depth++;
 
             foreach ($childrens as $children) {
-
                 if (count($children->childrens) > 0) {
                     $this->getDepth($children->childrens);
                 }
@@ -461,9 +451,9 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Convert childrens multidimensional to single dimension
+     * Convert childrens multidimensional to single dimension.
      *
-     * @param  array $childrens
+     * @param array $childrens
      *
      * @return array|false
      */
@@ -485,11 +475,11 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Get all Childrens
+     * Get all Childrens.
      *
-     * @param  int $menu_id
-     * @param  int $parent_id
-     * @param  string $orderBy
+     * @param int    $menu_id
+     * @param int    $parent_id
+     * @param string $orderBy
      *
      * @return array
      */
@@ -502,9 +492,9 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Get Items id
+     * Get Items id.
      *
-     * @param  array $items
+     * @param array $items
      *
      * @return array
      */
@@ -520,21 +510,19 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Create or Update Settings
+     * Create or Update Settings.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
     public function storeSettings(Request $request)
     {
         if ($request->ajax()) {
-
             if ($request->depth && $request->menu_id) {
-
                 if ($menuSetting = MenuSetting::where('menu_id', $request->menu_id)->first()) {
-                    $menuSetting->depth                 = $request->depth;
-                    $menuSetting->levels                = $request->levels;
+                    $menuSetting->depth = $request->depth;
+                    $menuSetting->levels = $request->levels;
                     $menuSetting->apply_child_as_parent = $request->apply_child_as_parent;
 
                     if ($menuSetting->update()) {
@@ -544,14 +532,13 @@ class MenuItemController extends Controller
                         ]);
                     }
                 } else {
-                    $menuSetting                        = new MenuSetting;
-                    $menuSetting->menu_id               = $request->menu_id;
-                    $menuSetting->depth                 = $request->depth;
+                    $menuSetting = new MenuSetting();
+                    $menuSetting->menu_id = $request->menu_id;
+                    $menuSetting->depth = $request->depth;
                     $menuSetting->apply_child_as_parent = $request->apply_child_as_parent;
-                    $menuSetting->levels                = $request->levels;
+                    $menuSetting->levels = $request->levels;
 
                     if ($menuSetting->save()) {
-
                         return response()->json([
                             'success'  => true,
                             'settings' => $menuSetting,
@@ -565,20 +552,17 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Get Single Setting
+     * Get Single Setting.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
     public function getSettings(Request $request)
     {
         if ($request->ajax()) {
-
             if ($request->menu_id) {
-
                 if ($menuSetting = MenuSetting::where('menu_id', $request->menu_id)->first()) {
-
                     return response()->json([
                         'success'  => true,
                         'settings' => $menuSetting,
@@ -592,6 +576,6 @@ class MenuItemController extends Controller
 
     public function setRoute(Request $request)
     {
-        return "Set your own controller";
+        return 'Set your own controller';
     }
 }

@@ -3,13 +3,11 @@
 namespace CodexShaper\Menu;
 
 use CodexShaper\Menu\Commands\InstallMenuBuilder;
-use CodexShaper\Menu\MenuBuilder;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 
 class MenuServiceProvider extends ServiceProvider
 {
-
     /**
      * Boot the service provider.
      *
@@ -17,8 +15,8 @@ class MenuServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'menu');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'menu');
     }
 
     /**
@@ -32,7 +30,8 @@ class MenuServiceProvider extends ServiceProvider
             return new MenuBuilder();
         });
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/menu.php', 'config'
+            __DIR__.'/../config/menu.php',
+            'config'
         );
         $this->loadHelpers();
         $this->registerBladeDirectives();
@@ -47,12 +46,11 @@ class MenuServiceProvider extends ServiceProvider
                 return "<?php menu($name) ?>";
             });
         });
-
     }
 
     protected function loadHelpers()
     {
-        foreach (glob(__DIR__ . '/Helpers/*.php') as $filename) {
+        foreach (glob(__DIR__.'/Helpers/*.php') as $filename) {
             require_once $filename;
         }
     }
@@ -61,16 +59,16 @@ class MenuServiceProvider extends ServiceProvider
     {
         $publishable = [
             'menu.config'    => [
-                __DIR__ . '/../config/menu.php' => config_path('menu.php'),
+                __DIR__.'/../config/menu.php' => config_path('menu.php'),
             ],
             'menu.seeds'     => [
-                __DIR__ . "/../database/seeds/" => database_path('seeds'),
+                __DIR__.'/../database/seeds/' => database_path('seeds'),
             ],
             'menu.views'     => [
-                __DIR__ . '/../resources/views' => resource_path('views/vendor/menus/views'),
+                __DIR__.'/../resources/views' => resource_path('views/vendor/menus/views'),
             ],
             'menu.resources' => [
-                __DIR__ . '/../resources' => resource_path('views/vendor/menus'),
+                __DIR__.'/../resources' => resource_path('views/vendor/menus'),
             ],
         ];
 
