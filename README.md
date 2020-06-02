@@ -1,4 +1,5 @@
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+[![Downloads](https://poser.pugx.org/Codexshaper/laravel-menu-builder/d/total.svg)](https://packagist.org/packages/Codexshaper/laravel-menu-builder)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/Codexshaper/laravel-menu-builder.svg?style=flat-square)](https://packagist.org/packages/Codexshaper/laravel-menu-builder)
 
 # Laravel Menu Builder
