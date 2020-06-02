@@ -42,8 +42,9 @@ $menuItems = MenuItem::all();
 foreach ($menuItems as $menuItem) {
     if ($menuItem->url != null) {
         $controller = $menuItem->controller ?? '\CodexShaper\Menu\Http\Controllers\MenuItemController@setRoute';
-
-        if (!class_exists($controller)) {
+        $partials = explode('@', $menuItem->controller);
+        
+        if (! class_exists($partials[0])) {
             $controller = '\CodexShaper\Menu\Http\Controllers\MenuItemController@setRoute';
         }
 
