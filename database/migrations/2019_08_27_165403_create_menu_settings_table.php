@@ -30,6 +30,6 @@ class CreateMenuSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menu_items');
+        Schema::dropIfExists('menu_settings');
     }
 }
