@@ -49,8 +49,8 @@ class InstallMenuBuilder extends Command
     protected function findComposer()
     {
         if (file_exists(getcwd() . '/composer.phar')) {
-            /* return '"' . PHP_BINARY . '" ' . getcwd() . '/composer.phar'; // Leading quotes causing duplicate returns (origin) */
-            return PHP_BINARY . '" ' . getcwd() . '/composer.phar'; /* Removed leading quotation marks */
+            // return '"' . PHP_BINARY . '" ' . getcwd() . '/composer.phar'; // Leading quotes causing duplicate returns (origin)
+            return PHP_BINARY . '" ' . getcwd() . '/composer.phar'; // Removed leading quotation marks
         }
         return 'composer';
     }
@@ -75,7 +75,7 @@ class InstallMenuBuilder extends Command
         $this->info('Dumping the autoloaded files and reloading all new files');
         $composer = $this->findComposer();
         /* $process  = new Process($composer . ' dump-autoload'); // Process waits array, as can be seen during the release of the exception: "Symfony\Component\Process\Process::__construct(): Argument #1 ($command) must be of type array, string given" */
-        $process  = new Process([$composer . ' dump-autoload']); /* Command passed as array */
+        $process  = new Process([$composer . ' dump-autoload']); /* Comando passado como array */
         $process->setTimeout(null); // Setting timeout to null to prevent installation from stopping at a certain point in time
         $process->setWorkingDirectory(base_path())->run();
 
